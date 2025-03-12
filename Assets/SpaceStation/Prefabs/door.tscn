@@ -1,0 +1,262 @@
+[gd_scene load_steps=20 format=3 uid="uid://c7vsnv78xsu04"]
+
+[ext_resource type="Script" uid="uid://dgv5643r6y6ty" path="res://Scripts/Door/AutomaticDoor.cs" id="1_kcpo1"]
+[ext_resource type="ArrayMesh" uid="uid://c4fme2ol2wmiu" path="res://Assets/SpaceStation/Door/STATION_DOOR1.vox" id="1_rx4ks"]
+[ext_resource type="ArrayMesh" uid="uid://cw3iaps07ru6o" path="res://Assets/SpaceStation/Door/STATION_DOOR2.vox" id="2_kcpo1"]
+[ext_resource type="AudioStream" uid="uid://rdlxt21k6qit" path="res://Assets/Sfx/sci_fi_door_open.wav" id="2_ryeto"]
+[ext_resource type="Script" uid="uid://boaqwjnqx4237" path="res://Scripts/Audio/RandomizedSoundSettings3D.cs" id="3_m51hy"]
+[ext_resource type="ArrayMesh" uid="uid://c7xyqx3njpklu" path="res://Assets/SpaceStation/Door/STATION_DOOR3.vox" id="3_ulxjb"]
+[ext_resource type="AudioStream" uid="uid://pcvk4ep7fcru" path="res://Assets/Sfx/sci_fi_door_close.wav" id="4_cdgnh"]
+[ext_resource type="ArrayMesh" uid="uid://cibp6sgwavgo3" path="res://Assets/SpaceStation/Door/STATION_DOOR4.vox" id="4_ryeto"]
+
+[sub_resource type="Resource" id="Resource_5lk4e"]
+script = ExtResource("3_m51hy")
+MinUnitSize = 8.0
+MaxUnitSize = 12.0
+Sound = ExtResource("2_ryeto")
+MinVolume = -1.0
+MaxVolume = -1.0
+MinPitch = 0.9
+MaxPitch = 1.1
+
+[sub_resource type="Resource" id="Resource_72m4n"]
+script = ExtResource("3_m51hy")
+MinUnitSize = 8.0
+MaxUnitSize = 12.0
+Sound = ExtResource("4_cdgnh")
+MinVolume = -1.0
+MaxVolume = -1.0
+MinPitch = 0.9
+MaxPitch = 1.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ersp"]
+size = Vector3(5.5, 4.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx4ks"]
+size = Vector3(2.5, 4.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcpo1"]
+size = Vector3(5.5, 3.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ulxjb"]
+size = Vector3(2.5, 3.5, 1)
+
+[sub_resource type="Animation" id="Animation_ulxjb"]
+resource_name = "Close"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.406126, 1.46409, 1),
+"update": 0,
+"values": [Vector3(-4.35, 7.146, 0), Vector3(-1.27, 3.775, 0), Vector3(-1.25, 3.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.535887, 1.46409, 1),
+"update": 0,
+"values": [Vector3(4.595, 5.746, 0), Vector3(2.789, 3.795, 0), Vector3(2.75, 3.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.466516, 1.46409, 1),
+"update": 0,
+"values": [Vector3(4.184, -3.583, 0), Vector3(1.278, -0.289, 0), Vector3(1.25, -0.25, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("4:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.420448, 1.46409, 1),
+"update": 0,
+"values": [Vector3(-4.669, -1.947, 0), Vector3(-2.769, -0.264, 0), Vector3(-2.75, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rx4ks"]
+resource_name = "Open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.25, 3.75, 0), Vector3(-1.245, 3.745, 0), Vector3(-4.35, 7.146, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(2.75, 3.75, 0), Vector3(2.745, 3.745, 0), Vector3(4.595, 5.746, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.25, -0.25, 0), Vector3(1.255, -0.245, 0), Vector3(4.184, -3.583, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("4:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.75, -0.25, 0), Vector3(-2.745, -0.245, 0), Vector3(-4.669, -1.947, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kcpo1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25, 3.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.75, 3.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, -0.25, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.75, -0.25, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulxjb"]
+_data = {
+&"Close": SubResource("Animation_ulxjb"),
+&"Open": SubResource("Animation_rx4ks"),
+&"RESET": SubResource("Animation_kcpo1")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ulxjb"]
+radius = 9.0
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_kcpo1")
+OpenSound = SubResource("Resource_5lk4e")
+CloseSound = SubResource("Resource_72m4n")
+
+[node name="1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 3.75, 0)
+shape = SubResource("BoxShape3D_7ersp")
+
+[node name="StationDoor1" type="MeshInstance3D" parent="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30211, -3.78474, 0)
+mesh = ExtResource("1_rx4ks")
+skeleton = NodePath("../..")
+
+[node name="2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 3.75, 0)
+shape = SubResource("BoxShape3D_rx4ks")
+
+[node name="StationDoor2" type="MeshInstance3D" parent="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80211, -3.76737, 0)
+mesh = ExtResource("2_kcpo1")
+skeleton = NodePath("../..")
+
+[node name="3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 0)
+shape = SubResource("BoxShape3D_kcpo1")
+
+[node name="StationDoor3" type="MeshInstance3D" parent="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31948, 0.302108, 0)
+mesh = ExtResource("3_ulxjb")
+skeleton = NodePath("../..")
+
+[node name="4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, -0.25, 0)
+shape = SubResource("BoxShape3D_ulxjb")
+
+[node name="StationDoor4" type="MeshInstance3D" parent="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78474, 0.284739, 0)
+mesh = ExtResource("4_ryeto")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ulxjb")
+}
+autoplay = "RESET"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ulxjb")
+
+[connection signal="body_entered" from="Area3D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area3D" to="." method="OnBodyExited"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bek03cid3jqis"]
+
+[ext_resource type="ArrayMesh" uid="uid://8cqjmuqwa0gm" path="res://Assets/SpaceShip/shipdoor.vox" id="1_21aeu"]
+[ext_resource type="ArrayMesh" uid="uid://bhjpblsejmg4h" path="res://Assets/SpaceShip/shipglass.vox" id="2_4e8sg"]
+[ext_resource type="ArrayMesh" uid="uid://dmy4yhle41d1v" path="res://Assets/SpaceShip/ship2.vox" id="3_plchl"]
+[ext_resource type="ArrayMesh" uid="uid://cvumvhv7btb6s" path="res://Assets/SpaceShip/ship_leg.vox" id="4_xlmhg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vclt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wagny"]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 1, 1, 0.575)
+metallic = 0.61
+metallic_specular = 0.74
+roughness = 0.16
+emission_texture = SubResource("CompressedTexture2D_5vclt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsmqm"]
+
+[node name="ShipTest" type="CharacterBody3D"]
+
+[node name="Shipdoor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -5)
+mesh = ExtResource("1_21aeu")
+skeleton = NodePath("../..")
+
+[node name="Shipglass" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_4e8sg")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wagny")
+
+[node name="Ship2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_plchl")
+skeleton = NodePath("../..")
+
+[node name="ShipLeg" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = ExtResource("4_xlmhg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dsmqm")

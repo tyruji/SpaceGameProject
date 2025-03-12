@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3538jpe7awfp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjibs6y77cggk" path="res://Assets/SpaceStation/Ventilator/HugeVentilatorCage.vox" id="1_huj4w"]
+[ext_resource type="ArrayMesh" uid="uid://dh67xxup6nban" path="res://Assets/SpaceStation/Ventilator/HugeVentilatorFan.vox" id="2_3x4f7"]
+[ext_resource type="Script" uid="uid://bl1e4frekofsl" path="res://Scripts/FX/SimpleRotator.cs" id="3_n7msp"]
+[ext_resource type="AudioStream" uid="uid://dwoqehthg8lbb" path="res://Assets/Sfx/fan_noise.wav" id="4_2umta"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huj4w"]
+size = Vector3(9, 15, 15)
+
+[node name="HugeVentilator" type="StaticBody3D"]
+
+[node name="HugeVentilatorCage" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.145, 0, 0, 0, 1, 0, 0, 0, 1, 0.605611, 0, 0.5)
+mesh = ExtResource("1_huj4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 7.5, 0)
+shape = SubResource("BoxShape3D_huj4w")
+
+[node name="RotatingFan" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.636977, 0.770883, 0, -0.770883, 0.636977, 0, 7.5, 0)
+script = ExtResource("3_n7msp")
+RotationSpeed = 300.0
+
+[node name="HugeVentilatorFan" type="MeshInstance3D" parent="RotatingFan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.5, 0.5)
+mesh = ExtResource("2_3x4f7")
+skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2757, 0)
+stream = ExtResource("4_2umta")
+unit_size = 3.0
+autoplay = true
+stream_paused = true
+max_distance = 100.0
