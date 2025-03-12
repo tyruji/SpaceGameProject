@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Door : StaticBody3D
+public partial class Door : Node3D
 {
     [Export]
     public RandomizedSoundSettings3D OpenSound { get; set; }
@@ -9,16 +9,17 @@ public partial class Door : StaticBody3D
     [Export]
     public RandomizedSoundSettings3D CloseSound { get; set; }
     
-    protected AnimationPlayer animationPlayer = null;
+    [Export]
+    public AnimationPlayer AnimationPlayer = null;
 
     public override void _Ready()
     {
-        animationPlayer ??= GetNode<AnimationPlayer>( nameof( AnimationPlayer ) );
+        AnimationPlayer ??= GetNode<AnimationPlayer>( nameof( AnimationPlayer ) );
     }
 
     public void Open()
     {
-        animationPlayer.Play( nameof( Open ) );
+        AnimationPlayer.Play( nameof( Open ) );
 
         if( OpenSound == null ) return;
 
@@ -27,7 +28,7 @@ public partial class Door : StaticBody3D
 
     public void Close()
     {
-        animationPlayer.Play( nameof( Close ) );
+        AnimationPlayer.Play( nameof( Close ) );
 
         if( CloseSound == null ) return;
 

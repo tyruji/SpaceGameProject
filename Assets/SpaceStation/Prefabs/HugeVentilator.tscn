@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3538jpe7awfp"]
+[gd_scene load_steps=9 format=3 uid="uid://d3538jpe7awfp"]
 
 [ext_resource type="ArrayMesh" uid="uid://cjibs6y77cggk" path="res://Assets/SpaceStation/Ventilator/HugeVentilatorCage.vox" id="1_huj4w"]
 [ext_resource type="ArrayMesh" uid="uid://dh67xxup6nban" path="res://Assets/SpaceStation/Ventilator/HugeVentilatorFan.vox" id="2_3x4f7"]
@@ -6,7 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://dwoqehthg8lbb" path="res://Assets/Sfx/fan_noise.wav" id="4_2umta"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_huj4w"]
-size = Vector3(9, 15, 15)
+size = Vector3(4.59282, 15, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2umta"]
+size = Vector3(1.13745, 1, 13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kt7v"]
+size = Vector3(3.4585, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iodn1"]
+size = Vector3(8.81311, 1.13287, 1)
 
 [node name="HugeVentilator" type="StaticBody3D"]
 
@@ -15,11 +24,99 @@ transform = Transform3D(1.145, 0, 0, 0, 1, 0, 0, 0, 1, 0.605611, 0, 0.5)
 mesh = ExtResource("1_huj4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 7.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70359, 7.5, 0)
 shape = SubResource("BoxShape3D_huj4w")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6186, 11.5, 0)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6186, 7.5, 0)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6186, 3.5, 0)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.6186, 7.5, -4)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.6186, 7.5, 0)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.6186, 7.5, 4)
+shape = SubResource("BoxShape3D_2umta")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 14.5, 4)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 14.5, 0)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 14.5, -4)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 11.5, -7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 7.5, -7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 3.5, -7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 0.5, -4)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 0.5, 0)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 0.5, 4)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 3.5, 7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 7.5, 7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.3247, 11.5, 7)
+shape = SubResource("BoxShape3D_3kt7v")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1.17817, 14.5, -0.017395)
+shape = SubResource("BoxShape3D_iodn1")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1.17817, 0.5, -0.017395)
+shape = SubResource("BoxShape3D_iodn1")
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.17817, 7.5, 6.9826)
+shape = SubResource("BoxShape3D_iodn1")
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.17817, 7.5, -7.0174)
+shape = SubResource("BoxShape3D_iodn1")
+
 [node name="RotatingFan" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.636977, 0.770883, 0, -0.770883, 0.636977, 0, 7.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.555192, -0.831722, 0, 0.831722, 0.555192, 0, 7.5, 0)
 script = ExtResource("3_n7msp")
 RotationSpeed = 300.0
 
@@ -33,5 +130,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2757, 0)
 stream = ExtResource("4_2umta")
 unit_size = 3.0
 autoplay = true
-stream_paused = true
 max_distance = 100.0

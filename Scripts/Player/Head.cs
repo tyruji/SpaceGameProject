@@ -55,7 +55,7 @@ public partial class Head : Node3D
     private void HandleRayCast()
     {
         var col = RayCast.GetCollider();
-
+        
         if( col is IInteractable interactable )
         {
             selectedInteractable = interactable;

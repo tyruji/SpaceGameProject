@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=23 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_3a2rb"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
@@ -13,10 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://balrle0hougg6" path="res://Assets/Sfx/footstep_metal.wav" id="8_quuxy"]
 [ext_resource type="Script" uid="uid://c56o2roobej1u" path="res://Scripts/Audio/RandomizedSoundSettings.cs" id="9_btq7v"]
 [ext_resource type="AudioStream" uid="uid://dky8yuiwr642r" path="res://Assets/Sfx/metal_bang.wav" id="10_btq7v"]
-[ext_resource type="ArrayMesh" uid="uid://8cqjmuqwa0gm" path="res://Assets/SpaceShip/shipdoor.vox" id="12_dsmqm"]
-[ext_resource type="ArrayMesh" uid="uid://dmy4yhle41d1v" path="res://Assets/SpaceShip/ship2.vox" id="12_g2toa"]
-[ext_resource type="ArrayMesh" uid="uid://bhjpblsejmg4h" path="res://Assets/SpaceShip/shipglass.vox" id="12_wagny"]
-[ext_resource type="ArrayMesh" uid="uid://cvumvhv7btb6s" path="res://Assets/SpaceShip/ship_leg.vox" id="15_k4xbn"]
+[ext_resource type="PackedScene" uid="uid://bek03cid3jqis" path="res://Assets/SpaceShip/space_ship1.tscn" id="14_dsmqm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a2rb"]
 
@@ -69,20 +66,6 @@ adjustment_brightness = 0.92
 adjustment_contrast = 1.08
 adjustment_saturation = 1.42
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vclt"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wagny"]
-transparency = 1
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(1, 1, 1, 0.575)
-metallic = 0.61
-metallic_specular = 0.74
-roughness = 0.16
-emission_texture = SubResource("CompressedTexture2D_5vclt")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dsmqm"]
-
 [node name="PrototypeScene" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Head")]
@@ -96,7 +79,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936371, 0)
 script = ExtResource("2_c2tmr")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Head"]
-target_position = Vector3(0, 0, 3)
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true
 debug_shape_custom_color = Color(0.694118, 0.0588235, 1, 1)
 debug_shape_thickness = 4
 
@@ -172,26 +156,5 @@ ambient_color_energy = 0.52
 [node name="Garage_Ship" parent="Settings" instance=ExtResource("7_jvg64")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 80)
 
-[node name="ShipTest" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 1.02874, 79.1)
-
-[node name="Shipdoor" type="MeshInstance3D" parent="ShipTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -5)
-mesh = ExtResource("12_dsmqm")
-skeleton = NodePath("../..")
-
-[node name="Shipglass" type="MeshInstance3D" parent="ShipTest"]
-mesh = ExtResource("12_wagny")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wagny")
-
-[node name="Ship2" type="MeshInstance3D" parent="ShipTest"]
-mesh = ExtResource("12_g2toa")
-skeleton = NodePath("../..")
-
-[node name="ShipLeg" type="MeshInstance3D" parent="ShipTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = ExtResource("15_k4xbn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ShipTest"]
-shape = SubResource("BoxShape3D_dsmqm")
+[node name="ShipTest" parent="." instance=ExtResource("14_dsmqm")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 1.02874, 79.1)

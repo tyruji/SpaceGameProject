@@ -3,13 +3,16 @@ using System;
 
 public partial class AutomaticDoor : Door
 {
+    [Export]
+    public bool OnlyDetectPlayer { get; set; } = false;
+
     private int _bodiesInRange = 0;
 
     private bool _closed = true;
 
     public override void _Process( double delta )
     {
-        if( animationPlayer.IsPlaying() ) return;
+        if( AnimationPlayer.IsPlaying() ) return;
 
         if( _bodiesInRange == 0 && !_closed )
         {
@@ -25,6 +28,8 @@ public partial class AutomaticDoor : Door
 
     public void OnBodyEntered( Node body )
     {
+        if( OnlyDetectPlayer && body is not Player ) return;
+
             // Only detect moving bodies.
         if( body is not CharacterBody3D and not RigidBody3D ) return;
 
@@ -33,6 +38,8 @@ public partial class AutomaticDoor : Door
 
     public void OnBodyExited( Node body )
     {
+        if( OnlyDetectPlayer && body is not Player ) return;
+
         if( body is not CharacterBody3D and not RigidBody3D ) return;
 
         --_bodiesInRange;
