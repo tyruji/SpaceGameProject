@@ -9,6 +9,11 @@ public partial class InteractableProxy : Area3D, IInteractable, IHighlightable
     [Export]
     public Node3D HighlightNode { get; set; }
 
+    public override void _Ready()
+    {
+        ActualInteractableNodePath ??= GetParent().GetPath();
+    }
+
     public void Interact( Node interactor )
     {
         if( interactor is not Player player ) return;

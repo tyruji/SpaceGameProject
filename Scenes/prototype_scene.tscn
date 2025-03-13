@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_3a2rb"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
 [ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Player/Head.cs" id="2_c2tmr"]
-[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Control/ControlFlowHandler.cs" id="2_j03km"]
+[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Player/ControlFlowHandler.cs" id="2_j03km"]
 [ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="4_g2toa"]
 [ext_resource type="MeshLibrary" uid="uid://c4tkwy28vus7r" path="res://Assets/SpaceStation/SpaceStationLibrary2.tres" id="5_6bdts"]
 [ext_resource type="VoxelGIData" uid="uid://bw888rcjyphem" path="res://SceneData/prototype_scene.VoxelGI_data.res" id="6_fsuf2"]

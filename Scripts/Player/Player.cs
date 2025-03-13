@@ -67,6 +67,7 @@ public partial class Player : CharacterBody3D, IControllable
     public void NotifyInteraction( IInteractable interactable )
     {
         OnInteract?.Invoke( interactable );
+        interactable.Interact( this );
     }
 
     private void HandleMovement( double delta )
