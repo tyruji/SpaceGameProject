@@ -77,7 +77,6 @@ Head = NodePath("Head")
 
 [node name="OrientationHandler" type="Node3D" parent="Player"]
 script = ExtResource("2_k4xbn")
-OrientationCorrectionSpeed = 20.0
 OrientationCorrectionTime = 0.2
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/OrientationHandler"]
