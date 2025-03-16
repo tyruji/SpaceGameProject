@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class StepStompElement : Node, ISteppable, IStompable
+public partial class StepStompElement : Node3D, ISteppable, IStompable, IOrientationSpace
 {
     [Signal]
     public delegate void OnStepEventHandler();

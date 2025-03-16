@@ -29,7 +29,23 @@ public partial class Player : CharacterBody3D, IControllable
     [Export]
     public Node3D Head { get; set; }
 
-    public bool EnableControl { get; set; }
+    public bool EnableControl 
+    {
+        get => _enableControl;
+        set
+        {
+            _enableControl = value;
+            if( !value )
+            {
+                this.ProcessMode = ProcessModeEnum.Disabled;
+            }
+            else
+            {
+                this.ProcessMode = ProcessModeEnum.Inherit;
+            }
+        }
+    }
+    private bool _enableControl = false;
 
     public ICameraMode CameraMode
     {
@@ -37,6 +53,7 @@ public partial class Player : CharacterBody3D, IControllable
         {
             var mode = CameraModes.CAMERA_TIGHT_FOLLOW_MODE;
             mode.FollowTarget = Head;
+            
             return mode;
         }
     }
@@ -67,26 +84,26 @@ public partial class Player : CharacterBody3D, IControllable
     public void NotifyInteraction( IInteractable interactable )
     {
         OnInteract?.Invoke( interactable );
+        interactable.Interact( this );
     }
 
     private void HandleMovement( double delta )
     {
         float dt = ( float )delta;
-    
-        var new_vel = Velocity;
-        new_vel.Y -= dt * Gravity;
 
-        var horizontal_vel = Velocity;
-        horizontal_vel.Y = 0;
+        var up = GlobalBasis.Y;
+            // Get the projected horizontal velocity based on upward axis.
+        var upward_vel = up * Velocity.Dot( up );
+        var horizontal_vel = Velocity - upward_vel;
+        upward_vel -= dt * Gravity * up;
+        //horizontal_vel.Y = 0;
     
             // Add air acceleration and friction later on!
         var acc = inputDirection.Dot( horizontal_vel ) > 0 ? Acceleration : Friction;
 
         horizontal_vel = horizontal_vel.Lerp( inputDirection * MaxSpeed, acc * dt );
-        new_vel.X = horizontal_vel.X;
-        new_vel.Z = horizontal_vel.Z;
 
-        Velocity = new_vel;
+        Velocity = horizontal_vel + upward_vel;
         MoveAndSlide();
     }
 
@@ -97,7 +114,9 @@ public partial class Player : CharacterBody3D, IControllable
 
             // Rotate body and head with mouse.
         Head.RotateX( Mathf.DegToRad( -mouse_event.Relative.Y * MouseSensitivity ) );
-        RotateY( Mathf.DegToRad( -mouse_event.Relative.X * MouseSensitivity ) );
+            // up direction changes based on the environment (planets, spaceships, structures)
+        var up = GlobalBasis.Y;
+        Rotate( up, Mathf.DegToRad( -mouse_event.Relative.X * MouseSensitivity ) );
 
             // Clamp up and down head rotation
         var head_rot = Head.RotationDegrees;
@@ -112,13 +131,16 @@ public partial class Player : CharacterBody3D, IControllable
         Vector2 dir = Input.GetVector( InputActions.LEFT, InputActions.RIGHT,
             InputActions.FORWARD, InputActions.BACK );
 
-        inputDirection += dir.X * Head.GlobalBasis.X.Normalized();
-        inputDirection += dir.Y * Head.GlobalBasis.Z.Normalized();
+        inputDirection += dir.X * GlobalBasis.X.Normalized();
+        inputDirection += dir.Y * GlobalBasis.Z.Normalized();
 
         if( IsOnFloor() && Input.IsActionJustPressed( InputActions.JUMP ) )
         {
-            Velocity *= new Vector3( 1, 0, 1 );
-            Velocity += Vector3.Up * JumpSpeed;
+            //Velocity *= new Vector3( 1, 0, 1 );
+            var up = GlobalBasis.Y;
+                // Reset upward velocity to 0.
+            Velocity -= up * Velocity.Dot( up );
+            Velocity += GlobalBasis.Y * JumpSpeed;
         }
 
         if( Input.IsActionJustPressed( InputActions.CANCEL ) )
