@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dwayucwjjh32f"]
+[gd_scene load_steps=26 format=3 uid="uid://dwayucwjjh32f"]
 
 [ext_resource type="ArrayMesh" uid="uid://y4nkl4keylw4" path="res://Assets/SpaceStation/Garrage_Ship.vox" id="1_k7i20"]
 [ext_resource type="Material" uid="uid://cnwjttq6nwgpr" path="res://Assets/GlobalMats/MainMat.tres" id="2_75q0l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c56o2roobej1u" path="res://Scripts/Audio/RandomizedSoundSettings.cs" id="5_r24se"]
 [ext_resource type="AudioStream" uid="uid://dky8yuiwr642r" path="res://Assets/Sfx/metal_bang.wav" id="6_r24se"]
 [ext_resource type="PackedScene" uid="uid://d3538jpe7awfp" path="res://Assets/SpaceStation/Prefabs/HugeVentilator.tscn" id="7_0ma6c"]
+[ext_resource type="Script" uid="uid://df6gs04pt60qu" path="res://Scripts/SimpleOrientationSpace.cs" id="7_pr7cg"]
 
 [sub_resource type="Resource" id="Resource_0ma6c"]
 script = ExtResource("5_r24se")
@@ -89,6 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00526336, 0.493534, 2)
 shape = SubResource("1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("7_pr7cg")
 
 [node name="CollisionShape2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0341635, 23.5075, 2.01435)

@@ -11,6 +11,10 @@ public partial class ControlFlowHandler : Node
 
     public IControllable currentControllable = null;
 
+    public Vector3 playerRelativePosition = Vector3.Zero;
+
+    public Vector3 playerRelativeRotation = Vector3.Zero;
+
     public override void _Ready()
     {
         Player ??= GetParent<Player>();
@@ -21,9 +25,25 @@ public partial class ControlFlowHandler : Node
         SwitchControlTo( Player );
     }
 
+    public override void _UnhandledInput( InputEvent @event )
+    {
+        if( !Input.IsActionJustPressed( InputActions.VEHICLE_EXIT ) ) return;
+        
+        SwitchControlBackToPlayer();
+    }
+
     public override void _ExitTree()
     {
         Player.OnInteract -= OnInteract;
+    }
+
+    public void SwitchControlBackToPlayer()
+    {
+        if( currentControllable is not Node3D node3D || currentControllable == Player ) return;
+
+        Player.GlobalPosition = node3D.ToGlobal( playerRelativePosition );
+        Player.GlobalRotation = node3D.GlobalRotation + playerRelativeRotation;
+        SwitchControlTo( Player );
     }
 
     private void OnInteract( IInteractable interactable )
@@ -43,5 +63,10 @@ public partial class ControlFlowHandler : Node
         currentControllable = controllable;
         currentControllable.EnableControl = true;
         CameraHandler.CameraMode = currentControllable.CameraMode;
+        
+        if( currentControllable is not Node3D node3D|| currentControllable == Player ) return;
+
+        playerRelativePosition = node3D.ToLocal( Player.GlobalPosition );
+        playerRelativeRotation = Player.GlobalRotation - node3D.GlobalRotation;
     }
 }

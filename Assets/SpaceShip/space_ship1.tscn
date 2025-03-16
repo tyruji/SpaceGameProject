@@ -260,15 +260,31 @@ size = Vector3(3, 1, 17)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xlmhg"]
 size = Vector3(4, 1, 19)
 
-[node name="Ship" type="CharacterBody3D"]
-motion_mode = 1
+[node name="Ship" type="RigidBody3D"]
+mass = 10000.0
+gravity_scale = 0.0
+can_sleep = false
+custom_integrator = true
 script = ExtResource("1_jnvki")
+MaxSpeed = 50.0
+CruiseSpeed = 0.1
+Deacceleration = 5.0
+RotationSpeed = 2.0
+RotationStabilisationSpeed = 2.0
+RotationAcceleration = 30.0
+TiltSpeed = 1.6
+TiltAcceleration = 20.0
+HoverSpeed = 15.0
+
+[node name="CheckGroundRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.391436, 0, 0)
+target_position = Vector3(0, -5, 0)
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-spring_length = 18.99
+spring_length = 25.0
 
 [node name="CameraFollowPoint" type="Node3D" parent="CameraPivot/SpringArm3D"]
 

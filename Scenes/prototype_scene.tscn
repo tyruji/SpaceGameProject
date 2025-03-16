@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=24 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_3a2rb"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
 [ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Player/Head.cs" id="2_c2tmr"]
 [ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Player/ControlFlowHandler.cs" id="2_j03km"]
+[ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Player/PlayerOrientationHandler.cs" id="2_k4xbn"]
 [ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="4_g2toa"]
 [ext_resource type="MeshLibrary" uid="uid://c4tkwy28vus7r" path="res://Assets/SpaceStation/SpaceStationLibrary2.tres" id="5_6bdts"]
 [ext_resource type="VoxelGIData" uid="uid://bw888rcjyphem" path="res://SceneData/prototype_scene.VoxelGI_data.res" id="6_fsuf2"]
@@ -69,10 +70,19 @@ adjustment_saturation = 1.42
 [node name="PrototypeScene" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Head")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8322, 3.14658, 3.99816)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 4.8783, 7.52646, 86.0317)
 script = ExtResource("1_3a2rb")
 JumpSpeed = 9.0
 Head = NodePath("Head")
+
+[node name="OrientationHandler" type="Node3D" parent="Player"]
+script = ExtResource("2_k4xbn")
+OrientationCorrectionSpeed = 20.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/OrientationHandler"]
+target_position = Vector3(0, -5, 0)
+debug_shape_custom_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+debug_shape_thickness = 4
 
 [node name="Head" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936371, 0)
@@ -88,6 +98,7 @@ debug_shape_thickness = 4
 shape = SubResource("CapsuleShape3D_3a2rb")
 
 [node name="ControlFlowHandler" type="Node" parent="Player"]
+process_mode = 3
 script = ExtResource("2_j03km")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
@@ -106,6 +117,9 @@ script = ExtResource("2_3a2rb")
 [node name="AudioListener3D" type="AudioListener3D" parent="CameraHandler"]
 
 [node name="Level" type="Node3D" parent="."]
+
+[node name="Garage_Ship" parent="Level" instance=ExtResource("7_jvg64")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 80)
 
 [node name="GridMap" type="GridMap" parent="Level"]
 mesh_library = ExtResource("5_6bdts")
@@ -152,9 +166,6 @@ interior = true
 ambient_mode = 0
 ambient_color = Color(1, 1, 1, 1)
 ambient_color_energy = 0.52
-
-[node name="Garage_Ship" parent="Settings" instance=ExtResource("7_jvg64")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 80)
 
 [node name="ShipTest" parent="." instance=ExtResource("14_dsmqm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 1.02874, 79.1)
