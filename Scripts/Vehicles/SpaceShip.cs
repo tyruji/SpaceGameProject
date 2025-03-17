@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOrientationSpace
+public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOrientationSpace, IFreezable
 {
     [Export]
     public float MaxSpeed { get; set; } = 20f;
@@ -50,6 +50,9 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
 
     [Export]
     public RayCast3D CheckGroundRayCast { get; set; }
+
+    [Export]
+    public bool InteractionEnabled { get; set; }
 
     public bool EnableControl
     {

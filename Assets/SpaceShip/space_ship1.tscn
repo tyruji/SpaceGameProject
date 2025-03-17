@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bek03cid3jqis"]
+[gd_scene load_steps=55 format=3 uid="uid://bek03cid3jqis"]
 
 [ext_resource type="Script" uid="uid://cbvw4disnjhej" path="res://Scripts/FX/InteractableProxy.cs" id="1_4e8sg"]
 [ext_resource type="ArrayMesh" uid="uid://8cqjmuqwa0gm" path="res://Assets/SpaceShip/shipdoor.vox" id="1_21aeu"]
@@ -9,10 +9,11 @@
 [ext_resource type="Shader" uid="uid://bvqj2r0hysqru" path="res://Shaders/AlphaPulseColor.gdshader" id="2_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://dmy4yhle41d1v" path="res://Assets/SpaceShip/ship2.vox" id="3_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://cvumvhv7btb6s" path="res://Assets/SpaceShip/ship_leg.vox" id="4_xlmhg"]
+[ext_resource type="Script" uid="uid://c888lcc1juxc1" path="res://Scripts/Vehicles/ParkingBrakeButton.cs" id="5_lpa8d"]
 
 [sub_resource type="Gradient" id="Gradient_obcha"]
 offsets = PackedFloat32Array(0, 0.436364, 0.990909)
-colors = PackedColorArray(0.907942, 0.907942, 0.907942, 1, 0.560955, 0.560955, 0.560955, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.908, 0.908, 0.908, 0.558, 0.561, 0.561, 0.561, 0.332, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_lpa8d"]
 gradient = SubResource("Gradient_obcha")
@@ -213,13 +214,25 @@ _data = {
 size = Vector3(3, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rykhb"]
-size = Vector3(1, 0.507935, 1)
+size = Vector3(0.639648, 0.249756, 0.298584)
 
-[sub_resource type="BoxMesh" id="BoxMesh_otp8q"]
-size = Vector3(1, 0.5, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_lpa8d"]
+size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21aeu"]
-albedo_color = Color(0.0572433, 0.188071, 0.0487964, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp6i7"]
+albedo_color = Color(1, 0.188235, 0.0470588, 1)
+emission_enabled = true
+emission = Color(1, 0.0909423, 0.0594643, 1)
+emission_energy_multiplier = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_15hy6"]
+size = Vector3(0.62, 0.225, 0.33)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpa8d"]
+albedo_color = Color(1, 0.766923, 0.719709, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cp3h2"]
+size = Vector3(0.62, 0.225, 0.33)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlmhg"]
 render_priority = 0
@@ -228,6 +241,12 @@ shader_parameter/color = Color(1, 1, 0, 1)
 shader_parameter/pulse_speed = 5.0
 shader_parameter/min_alpha = 0.1
 shader_parameter/max_alpha = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_otp8q"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21aeu"]
+albedo_color = Color(0.0572433, 0.188071, 0.0487964, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vclt"]
 
@@ -373,6 +392,31 @@ shape = SubResource("BoxShape3D_dtbc5")
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.49268, 0.5, 0)
 mesh = ExtResource("1_21aeu")
 skeleton = NodePath("../../..")
+
+[node name="ParkingBrake" type="Area3D" parent="." node_paths=PackedStringArray("HighlightNode")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.87128, 6.27567, -9.5724)
+script = ExtResource("5_lpa8d")
+HighlightNode = NodePath("HighlightMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingBrake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0019536, 0)
+shape = SubResource("BoxShape3D_rykhb")
+
+[node name="ParkingBrakeOnLight" type="MeshInstance3D" parent="ParkingBrake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018239, 0.148646, 0)
+visible = false
+mesh = SubResource("BoxMesh_lpa8d")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp6i7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ParkingBrake"]
+mesh = SubResource("BoxMesh_15hy6")
+surface_material_override/0 = SubResource("StandardMaterial3D_lpa8d")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="ParkingBrake"]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_cp3h2")
+surface_material_override/0 = SubResource("ShaderMaterial_xlmhg")
 
 [node name="InteractionProxy" type="Area3D" parent="." node_paths=PackedStringArray("HighlightNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24383, -10.5724)

@@ -48,7 +48,8 @@ public partial class ControlFlowHandler : Node
 
     private void OnInteract( IInteractable interactable )
     {
-        if( interactable is not IControllable controllable ) return;
+        if( interactable is not IControllable controllable
+            || !interactable.InteractionEnabled ) return;
 
         SwitchControlTo( controllable );
     }
