@@ -9,6 +9,11 @@ public partial class InteractableProxy : Area3D, IInteractable, IHighlightable
     [Export]
     public Node3D HighlightNode { get; set; }
 
+    [Export]
+    public bool DisableOutsideInteractions { get; set; } = true;
+
+    public bool InteractionEnabled { get; set; } = true;
+
     public override void _Ready()
     {
         ActualInteractableNodePath ??= GetParent().GetPath();
@@ -22,6 +27,15 @@ public partial class InteractableProxy : Area3D, IInteractable, IHighlightable
 
         if( interactableNode is not IInteractable interactable ) return;
 
+        if( DisableOutsideInteractions )
+        {
+            interactable.InteractionEnabled = true;
+            player.NotifyInteraction( interactable );
+            interactable.InteractionEnabled = false;
+            
+            return;
+        }
+        
         player.NotifyInteraction( interactable );
     }
 

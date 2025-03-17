@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOrientationSpace
+public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOrientationSpace, IFreezable
 {
     [Export]
     public float MaxSpeed { get; set; } = 20f;
@@ -46,7 +46,13 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
     public Node3D CameraFollowPoint { get; set; }
 
     [Export]
+    public RayCast3D CheckHoverRayCast { get; set; }
+
+    [Export]
     public RayCast3D CheckGroundRayCast { get; set; }
+
+    [Export]
+    public bool InteractionEnabled { get; set; }
 
     public bool EnableControl
     {
@@ -54,8 +60,9 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
         set
         {
             _enableControl = value;
-
-            Freeze = !value;
+            CustomIntegrator = value;
+            
+            // PhysicsServer3D.BodySetOmitForceIntegration( GetRid(), value );
         }
     }
     private bool _enableControl = false;
@@ -87,6 +94,7 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
         CameraPivot ??= GetNode<Node3D>( nameof( CameraPivot ) );
         SpringArm ??= CameraPivot.GetNode<SpringArm3D>( nameof( SpringArm3D ) );
         CameraFollowPoint ??= SpringArm.GetNode<Node3D>( nameof( CameraFollowPoint ) ); 
+        CheckHoverRayCast ??= GetNode<RayCast3D>( nameof( CheckHoverRayCast ) );
         CheckGroundRayCast ??= GetNode<RayCast3D>( nameof( CheckGroundRayCast ) );
     }
 
@@ -109,7 +117,11 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
 
     public override void _IntegrateForces( PhysicsDirectBodyState3D state )
     {
-        if( !EnableControl ) return;
+        if( !EnableControl )
+        {
+            HandleTurnOff( state );
+            return;
+        }
 
         float acc = Deacceleration;
         float speed_target = CruiseSpeed;
@@ -157,18 +169,22 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
         // and switch control over to them, when the player leaves the ship.
     public void Interact( Node interactor ) {}
 
+    private void HandleTurnOff( PhysicsDirectBodyState3D state )
+    {
+        GravityScale = CheckGroundRayCast.IsColliding() ? 1f : 0f;
+    }
+
     private Vector3 GetHoverVelocity()
     {
-        if( !CheckGroundRayCast.IsColliding() ) return Vector3.Zero;
-        
-        var col_point = CheckGroundRayCast.GetCollisionPoint();
-        var ray_len_sqr = CheckGroundRayCast.TargetPosition.LengthSquared();
-        var ray_to_col = col_point - CheckGroundRayCast.GlobalPosition;
+        if( !CheckHoverRayCast.IsColliding() ) return Vector3.Zero;
+        var col_point = CheckHoverRayCast.GetCollisionPoint();
+        var ray_len_sqr = CheckHoverRayCast.TargetPosition.LengthSquared();
+        var ray_to_col = col_point - CheckHoverRayCast.GlobalPosition;
         
         float scale = 1f - ray_to_col.LengthSquared() / ray_len_sqr;
         
         if( scale < 0f ) return Vector3.Zero;
 
-        return HoverSpeed * scale * CheckGroundRayCast.GetCollisionNormal();  
+        return HoverSpeed * scale * CheckHoverRayCast.GetCollisionNormal();  
     }
 }

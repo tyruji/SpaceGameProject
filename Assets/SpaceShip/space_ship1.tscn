@@ -1,13 +1,51 @@
-[gd_scene load_steps=40 format=3 uid="uid://bek03cid3jqis"]
+[gd_scene load_steps=55 format=3 uid="uid://bek03cid3jqis"]
 
 [ext_resource type="Script" uid="uid://cbvw4disnjhej" path="res://Scripts/FX/InteractableProxy.cs" id="1_4e8sg"]
 [ext_resource type="ArrayMesh" uid="uid://8cqjmuqwa0gm" path="res://Assets/SpaceShip/shipdoor.vox" id="1_21aeu"]
 [ext_resource type="Script" uid="uid://cy8hawtde4ff3" path="res://Scripts/Vehicles/SpaceShip.cs" id="1_jnvki"]
 [ext_resource type="Script" uid="uid://dgv5643r6y6ty" path="res://Scripts/Door/AutomaticDoor.cs" id="1_xlmhg"]
 [ext_resource type="ArrayMesh" uid="uid://bhjpblsejmg4h" path="res://Assets/SpaceShip/shipglass.vox" id="2_4e8sg"]
+[ext_resource type="Script" uid="uid://b3pa4jpoeyrjv" path="res://Scripts/FX/SpaceShipParticleHandler.cs" id="2_obcha"]
 [ext_resource type="Shader" uid="uid://bvqj2r0hysqru" path="res://Shaders/AlphaPulseColor.gdshader" id="2_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://dmy4yhle41d1v" path="res://Assets/SpaceShip/ship2.vox" id="3_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://cvumvhv7btb6s" path="res://Assets/SpaceShip/ship_leg.vox" id="4_xlmhg"]
+[ext_resource type="Script" uid="uid://c888lcc1juxc1" path="res://Scripts/Vehicles/ParkingBrakeButton.cs" id="5_lpa8d"]
+
+[sub_resource type="Gradient" id="Gradient_obcha"]
+offsets = PackedFloat32Array(0, 0.436364, 0.990909)
+colors = PackedColorArray(0.908, 0.908, 0.908, 0.558, 0.561, 0.561, 0.561, 0.332, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lpa8d"]
+gradient = SubResource("Gradient_obcha")
+
+[sub_resource type="Curve" id="Curve_15hy6"]
+_data = [Vector2(0, 0.505618), 0.0, 0.0, 0, 0, Vector2(0.191176, 0.865169), -0.867294, -0.867294, 0, 0, Vector2(1, 0.426966), -2.29214, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vp6i7"]
+curve = SubResource("Curve_15hy6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lpa8d"]
+lifetime_randomness = 0.11
+emission_shape = 1
+emission_sphere_radius = 2.54
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+radial_velocity_min = -5.00002
+radial_velocity_max = 4.99998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.0
+linear_accel_max = 5.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_vp6i7")
+color_ramp = SubResource("GradientTexture1D_lpa8d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15hy6"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vp6i7"]
+material = SubResource("StandardMaterial3D_15hy6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qywkc"]
 size = Vector3(10, 8, 22)
@@ -176,13 +214,25 @@ _data = {
 size = Vector3(3, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rykhb"]
-size = Vector3(1, 0.507935, 1)
+size = Vector3(0.639648, 0.249756, 0.298584)
 
-[sub_resource type="BoxMesh" id="BoxMesh_otp8q"]
-size = Vector3(1, 0.5, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_lpa8d"]
+size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21aeu"]
-albedo_color = Color(0.0572433, 0.188071, 0.0487964, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp6i7"]
+albedo_color = Color(1, 0.188235, 0.0470588, 1)
+emission_enabled = true
+emission = Color(1, 0.0909423, 0.0594643, 1)
+emission_energy_multiplier = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_15hy6"]
+size = Vector3(0.62, 0.225, 0.33)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpa8d"]
+albedo_color = Color(1, 0.766923, 0.719709, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cp3h2"]
+size = Vector3(0.62, 0.225, 0.33)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlmhg"]
 render_priority = 0
@@ -191,6 +241,12 @@ shader_parameter/color = Color(1, 1, 0, 1)
 shader_parameter/pulse_speed = 5.0
 shader_parameter/min_alpha = 0.1
 shader_parameter/max_alpha = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_otp8q"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21aeu"]
+albedo_color = Color(0.0572433, 0.188071, 0.0487964, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vclt"]
 
@@ -203,6 +259,9 @@ metallic = 0.61
 metallic_specular = 0.74
 roughness = 0.16
 emission_texture = SubResource("CompressedTexture2D_5vclt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2480b"]
+size = Vector3(1.00879, 1.00671, 5.01617)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dsmqm"]
 size = Vector3(6, 1, 21)
@@ -262,9 +321,7 @@ size = Vector3(4, 1, 19)
 
 [node name="Ship" type="RigidBody3D"]
 mass = 10000.0
-gravity_scale = 0.0
 can_sleep = false
-custom_integrator = true
 script = ExtResource("1_jnvki")
 MaxSpeed = 50.0
 CruiseSpeed = 0.1
@@ -276,9 +333,25 @@ TiltSpeed = 1.6
 TiltAcceleration = 20.0
 HoverSpeed = 15.0
 
-[node name="CheckGroundRayCast" type="RayCast3D" parent="."]
+[node name="ParticleHandler" type="Node3D" parent="."]
+script = ExtResource("2_obcha")
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="ParticleHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.55465, 11.8539)
+emitting = false
+amount = 32
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_lpa8d")
+draw_pass_1 = SubResource("BoxMesh_vp6i7")
+
+[node name="CheckHoverRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.391436, 0, 0)
 target_position = Vector3(0, -5, 0)
+
+[node name="CheckGroundRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.391436, 0, 0.356798)
+target_position = Vector3(0, -20, 0)
+debug_shape_custom_color = Color(0.898869, 1.34766e-06, 0.499256, 1)
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
@@ -320,6 +393,31 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.492
 mesh = ExtResource("1_21aeu")
 skeleton = NodePath("../../..")
 
+[node name="ParkingBrake" type="Area3D" parent="." node_paths=PackedStringArray("HighlightNode")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.87128, 6.27567, -9.5724)
+script = ExtResource("5_lpa8d")
+HighlightNode = NodePath("HighlightMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingBrake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0019536, 0)
+shape = SubResource("BoxShape3D_rykhb")
+
+[node name="ParkingBrakeOnLight" type="MeshInstance3D" parent="ParkingBrake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018239, 0.148646, 0)
+visible = false
+mesh = SubResource("BoxMesh_lpa8d")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp6i7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ParkingBrake"]
+mesh = SubResource("BoxMesh_15hy6")
+surface_material_override/0 = SubResource("StandardMaterial3D_lpa8d")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="ParkingBrake"]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_cp3h2")
+surface_material_override/0 = SubResource("ShaderMaterial_xlmhg")
+
 [node name="InteractionProxy" type="Area3D" parent="." node_paths=PackedStringArray("HighlightNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24383, -10.5724)
 script = ExtResource("1_4e8sg")
@@ -350,6 +448,22 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wagny")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = ExtResource("3_plchl")
 skeleton = NodePath("../..")
+
+[node name="LegCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50039, 0.496603, -6.49468)
+shape = SubResource("BoxShape3D_2480b")
+
+[node name="LegCol2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49961, 0.496603, -6.49468)
+shape = SubResource("BoxShape3D_2480b")
+
+[node name="LegCol3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49961, 0.496603, 4.50532)
+shape = SubResource("BoxShape3D_2480b")
+
+[node name="LegCol4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50039, 0.496603, 4.50532)
+shape = SubResource("BoxShape3D_2480b")
 
 [node name="ShipLeg" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)

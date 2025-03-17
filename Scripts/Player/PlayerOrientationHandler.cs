@@ -1,10 +1,26 @@
 using Godot;
 using System;
 
+
+/*
+    ********************************************************************    
+                    TODO:
+    IF THE RAY IS NOT DETECTING ANY GROUND,
+    PERFORM A SPHERE CAST TO CHECK FOR THE CLOSEST ORIENTATION SPACE
+    ALSO WOULD BE NICE TO DETECT IF THE PLAYER IS IN SPACE
+    BECAUSE THEN THERE WOULD BE NO GRAVITY,
+    SO LIKE, WHEN ENTERING PLANETS MAKE SOMETHING LIKE A BOOL IN_SPACE = FALSE
+    AND WHEN LEAVING A PLANET IN_SPACE = TRUE, DEFAULTING TO NO GRAVITY IF 
+    currentSpace IS NULL.
+
+    ********************************************************************
+*/
+
+
 public partial class PlayerOrientationHandler : Node3D
 {
     [Export]
-    public float OrientationCorrectionSpeed { get; set; } = 1.2f;
+    public float OrientationCorrectionTime { get; set; } = 1.2f;
 
     [Export]
     public Player Player { get; set; }
@@ -13,6 +29,14 @@ public partial class PlayerOrientationHandler : Node3D
     public RayCast3D RayCast { get; set; }
 
     public Transform3D targetTransform = default;
+
+    public Vector3 rotationAxis = Vector3.Zero;
+
+    public float rotationAngle = 0f;
+
+    public float timeElapsed = 0f;
+
+    public IOrientationSpace currentSpace = null;
 
     public override void _Ready()
     {
@@ -24,32 +48,41 @@ public partial class PlayerOrientationHandler : Node3D
     {
         HandleRay();
 
-        // var tr = Player.Transform;
-        // tr.Basis.Y = targetTransform.Basis.Y;
-        // Player.Transform = tr;
+        if( timeElapsed > OrientationCorrectionTime || currentSpace == null ) return;
+        float dt = ( float ) delta;
+        timeElapsed += dt;
 
-        // Vector3 player_up = Player.Transform.Basis.Y;
-        // Vector3 target_up = targetTransform.Basis.Y;
+        var p_b = Player.Basis;
+        var angle_diff = rotationAngle * dt / OrientationCorrectionTime;
+        p_b = p_b.Rotated( rotationAxis, angle_diff );
+        Player.Basis = p_b.Orthonormalized();
 
-        // // //Vector3 target_rot = .5f * Mathf.Pi * target_up.Cross( player_up ) - Player.Rotation;
-        // Vector3 target_rot = target_up.Cross( player_up );
-        // float alpha = ( float ) delta * OrientationCorrectionSpeed;
-        // //Player.Rotation = Player.Rotation.Lerp( target_rot, alpha );
-        // Player.Rotation += target_rot * alpha;
+        if( timeElapsed <= OrientationCorrectionTime ) return;
+    
+            // Do this at the end of interpolation
+            // to ensure we rotated fully,
+            // without small error.
+        UpdatePlayerBasis();
+        Player.Basis = Player.Basis.Rotated( rotationAxis, rotationAngle );
     }
 
     private void HandleRay()
     {
-        if( !RayCast.IsColliding() ) return;
+        if( !RayCast.IsColliding() )
+        {
+            currentSpace = null;
+        }
 
         var col = RayCast.GetCollider();
 
         if( col is not IOrientationSpace orientationSpace ) return;
-        
+        currentSpace = orientationSpace;
+
         if( targetTransform == orientationSpace.Transform ) return;
 
         targetTransform = orientationSpace.Transform;
         UpdatePlayerBasis();
+        timeElapsed = 0f;
     }
 
     private void UpdatePlayerBasis()
@@ -60,13 +93,11 @@ public partial class PlayerOrientationHandler : Node3D
 
         if( p_up.IsEqualApprox( t_up ) ) return;
         
-        var b = Player.GlobalBasis;
-        var n = t_up.Cross( p_up ).Normalized();
+        rotationAxis = t_up.Cross( p_up ).Normalized();
 
             // For some fucking reason the dot product ends up exceeding 1...
             // what the fuck? both vectors are normalised!!!
             // anyway i ended up clamping this.
-        var angle = Mathf.Acos( Mathf.Clamp( p_up.Dot( t_up ), -1f, 1f ) );
-        Player.GlobalBasis = b.Rotated( n, -angle ).Orthonormalized();
+        rotationAngle = -Mathf.Acos( Mathf.Clamp( p_up.Dot( t_up ), -1f, 1f ) );
     }
 }
