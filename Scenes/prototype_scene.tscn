@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Player/PlayerOrientationHandler.cs" id="2_k4xbn"]
 [ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="4_g2toa"]
 [ext_resource type="MeshLibrary" uid="uid://c4tkwy28vus7r" path="res://Assets/SpaceStation/SpaceStationLibrary2.tres" id="5_6bdts"]
-[ext_resource type="VoxelGIData" uid="uid://bw888rcjyphem" path="res://SceneData/prototype_scene.VoxelGI_data.res" id="6_fsuf2"]
 [ext_resource type="Script" uid="uid://c2s22yw8odpfu" path="res://Scripts/FX/StepStompElementAudio.cs" id="7_j6277"]
 [ext_resource type="PackedScene" uid="uid://dwayucwjjh32f" path="res://Assets/SpaceStation/Prefabs/Garage_Ship.tscn" id="7_jvg64"]
 [ext_resource type="PackedScene" uid="uid://c7vsnv78xsu04" path="res://Assets/SpaceStation/Prefabs/door.tscn" id="8_dsmqm"]
@@ -15,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c56o2roobej1u" path="res://Scripts/Audio/RandomizedSoundSettings.cs" id="9_btq7v"]
 [ext_resource type="AudioStream" uid="uid://dky8yuiwr642r" path="res://Assets/Sfx/metal_bang.wav" id="10_btq7v"]
 [ext_resource type="PackedScene" uid="uid://bek03cid3jqis" path="res://Assets/SpaceShip/space_ship1.tscn" id="14_dsmqm"]
+[ext_resource type="PackedScene" uid="uid://bd0wv7pusy0ny" path="res://Assets/MainRoboNpc/robo_npc.tscn" id="16_quuxy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a2rb"]
 
@@ -54,15 +54,22 @@ background_mode = 1
 sky = SubResource("Sky_j03km")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ssao_intensity = 16.0
-ssao_power = 0.061852
-ssao_ao_channel_affect = 0.8
-glow_enabled = true
-glow_intensity = 2.0
-glow_strength = 0.6
-glow_bloom = 0.41
+tonemap_white = 0.66
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 0.65
+ssao_power = 3.69343
+ssao_detail = 5.0
+ssil_intensity = 0.0
+glow_normalized = true
+glow_intensity = 2.76
+glow_strength = 0.54
+glow_bloom = 0.66
 glow_blend_mode = 0
-adjustment_enabled = true
+glow_hdr_luminance_cap = 0.6
+volumetric_fog_density = 0.03
+volumetric_fog_anisotropy = 0.47
+volumetric_fog_sky_affect = 0.0
 adjustment_brightness = 0.92
 adjustment_contrast = 1.08
 adjustment_saturation = 1.42
@@ -149,24 +156,16 @@ environment = SubResource("Environment_c2tmr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 29.6809, 0)
+light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 light_bake_mode = 1
-
-[node name="VoxelGI" type="VoxelGI" parent="Settings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2634, 10.8464, 29.6763)
-size = Vector3(84.099, 24.53, 143.148)
-camera_attributes = SubResource("CameraAttributesPractical_fsuf2")
-data = ExtResource("6_fsuf2")
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Settings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3643, 11.9253, 30.3145)
-blend_distance = 2.9
-size = Vector3(90.1199, 31.0239, 147.665)
-box_projection = true
-interior = true
-ambient_mode = 0
-ambient_color = Color(1, 1, 1, 1)
-ambient_color_energy = 0.52
+shadow_enabled = true
+shadow_opacity = 0.92
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.053
 
 [node name="ShipTest" parent="." instance=ExtResource("14_dsmqm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 1.02874, 79.1)
+
+[node name="RoboNpc" parent="." instance=ExtResource("16_quuxy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4487, 2.21535, -28.0227)

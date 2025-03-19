@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://0065iww4kgdb"]
+
+[ext_resource type="Material" uid="uid://ccbfx3jsj1iet" path="res://Assets/GlobalMats/MainEmissionOverlay.tres" id="1_i03n6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vclt"]
+
+[resource]
+next_pass = ExtResource("1_i03n6")
+diffuse_mode = 2
+specular_mode = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+roughness = 0.25
+emission_texture = SubResource("CompressedTexture2D_5vclt")
