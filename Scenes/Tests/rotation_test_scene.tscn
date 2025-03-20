@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqiqy4irvnqn3"]
+
+[sub_resource type="GDScript" id="GDScript_5t3xb"]
+script/source = "extends Node3D
+
+@onready
+var plyr = $Player
+
+@onready
+var ship = $Ship
+
+func _ready():
+	var plyr_rot = plyr.rotation_degrees
+	var ship_rot = ship.rotation_degrees
+	print( \"Current rotations: \" );
+	print( \"Player rotation: \", plyr_rot )
+	print( \"Ship rotation: \", ship_rot )
+	print( \"------------\" )
+	print( \"Rotated by parenting: \" )
+	plyr.reparent( ship )
+	await get_tree().process_frame
+	ship.rotation_degrees += Vector3( 20, 15, 42 )
+	await get_tree().process_frame
+	plyr.reparent( $\".\" )
+	await get_tree().process_frame
+	print( \"Player rotation: \", plyr.rotation_degrees )
+	print( \"Ship rotation: \", ship.rotation_degrees )
+	
+	print( \"------------\" )
+	plyr.rotation_degrees = plyr_rot
+	ship.rotation_degrees = ship_rot
+	print( \"Current rotations: \" );
+	print( \"Player rotation: \", plyr.rotation_degrees )
+	print( \"Ship rotation: \", ship.rotation_degrees )
+	print( \"------------\" )
+	print( \"Rotated by basis multiplication: \" )
+	plyr.transform = ship.transform.affine_inverse() * plyr.transform
+	#plyr.basis = ship.basis * plyr.basis
+	ship.rotation_degrees += Vector3( 20, 15, 42 )
+	plyr.transform = ship.transform * plyr.transform
+	#plyr.basis = ship.basis * plyr.basis
+	print( \"Player rotation: \", plyr.rotation_degrees )
+	print( \"Ship rotation: \", ship.rotation_degrees )
+"
+
+[node name="RotationTestScene" type="Node3D"]
+script = SubResource("GDScript_5t3xb")
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(0.591053, -0.543938, -0.595641, 0.165115, 0.804377, -0.570714, 0.789553, 0.238973, 0.565242, 0, 0, 0)
+
+[node name="Ship" type="Node3D" parent="."]
+transform = Transform3D(-0.203778, 0.144436, 0.968304, 0.292933, -0.93475, 0.201078, 0.934165, 0.324623, 0.148171, 0, 0, 0)
