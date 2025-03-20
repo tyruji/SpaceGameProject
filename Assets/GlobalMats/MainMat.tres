@@ -6,9 +6,7 @@
 
 [resource]
 next_pass = ExtResource("1_njmmt")
+diffuse_mode = 3
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-metallic = 0.39
-metallic_specular = 0.59
-roughness = 0.73
 emission_texture = SubResource("CompressedTexture2D_5vclt")
