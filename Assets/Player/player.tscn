@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnlhyf2lsapee"]
+
+[ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_5j20w"]
+[ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Player/PlayerOrientationHandler.cs" id="2_aqk3a"]
+[ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Player/Head.cs" id="3_rul8u"]
+[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Player/ControlFlowHandler.cs" id="4_kg0wl"]
+[ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="5_2147b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a2rb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j03km"]
+albedo_color = Color(0.643137, 1, 0.486275, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j03km"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Head")]
+script = ExtResource("1_5j20w")
+JumpSpeed = 9.0
+Head = NodePath("Head")
+
+[node name="OrientationHandler" type="Node3D" parent="."]
+script = ExtResource("2_aqk3a")
+OrientationCorrectionTime = 0.2
+
+[node name="RayCast3D" type="RayCast3D" parent="OrientationHandler"]
+target_position = Vector3(0, -5, 0)
+debug_shape_custom_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+debug_shape_thickness = 4
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936371, 0)
+script = ExtResource("3_rul8u")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.694118, 0.0588235, 1, 1)
+debug_shape_thickness = 4
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3a2rb")
+
+[node name="ControlFlowHandler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("4_kg0wl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_j03km")
+mesh = SubResource("CapsuleMesh_j03km")
+
+[node name="StepStompInvoker" type="Node" parent="."]
+script = ExtResource("5_2147b")

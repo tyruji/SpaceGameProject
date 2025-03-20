@@ -1,11 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=19 format=3 uid="uid://bbvn3a1nur7p7"]
 
-[ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_3a2rb"]
+[ext_resource type="PackedScene" uid="uid://cnlhyf2lsapee" path="res://Assets/Player/player.tscn" id="1_j6277"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
-[ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Player/Head.cs" id="2_c2tmr"]
-[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Player/ControlFlowHandler.cs" id="2_j03km"]
-[ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Player/PlayerOrientationHandler.cs" id="2_k4xbn"]
-[ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="4_g2toa"]
 [ext_resource type="MeshLibrary" uid="uid://c4tkwy28vus7r" path="res://Assets/SpaceStation/SpaceStationLibrary2.tres" id="5_6bdts"]
 [ext_resource type="Script" uid="uid://c2s22yw8odpfu" path="res://Scripts/FX/StepStompElementAudio.cs" id="7_j6277"]
 [ext_resource type="PackedScene" uid="uid://dwayucwjjh32f" path="res://Assets/SpaceStation/Prefabs/Garage_Ship.tscn" id="7_jvg64"]
@@ -13,15 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://balrle0hougg6" path="res://Assets/Sfx/footstep_metal.wav" id="8_quuxy"]
 [ext_resource type="Script" uid="uid://c56o2roobej1u" path="res://Scripts/Audio/RandomizedSoundSettings.cs" id="9_btq7v"]
 [ext_resource type="AudioStream" uid="uid://dky8yuiwr642r" path="res://Assets/Sfx/metal_bang.wav" id="10_btq7v"]
+[ext_resource type="Material" uid="uid://bepy367vke30p" path="res://Assets/Planets/TestPlanet/testplanetmat.tres" id="12_g2toa"]
 [ext_resource type="PackedScene" uid="uid://bek03cid3jqis" path="res://Assets/SpaceShip/space_ship1.tscn" id="14_dsmqm"]
 [ext_resource type="PackedScene" uid="uid://bd0wv7pusy0ny" path="res://Assets/MainRoboNpc/robo_npc.tscn" id="16_quuxy"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a2rb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j03km"]
-albedo_color = Color(0.643137, 1, 0.486275, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_j03km"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fsuf2"]
 dof_blur_far_enabled = true
@@ -74,51 +64,19 @@ adjustment_brightness = 0.92
 adjustment_contrast = 1.08
 adjustment_saturation = 1.42
 
+[sub_resource type="SphereMesh" id="SphereMesh_j6277"]
+radius = 4000.0
+height = 8000.0
+
 [node name="PrototypeScene" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Head")]
+[node name="Player" parent="." instance=ExtResource("1_j6277")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 4.8783, 7.52646, 86.0317)
-script = ExtResource("1_3a2rb")
-JumpSpeed = 9.0
-Head = NodePath("Head")
-
-[node name="OrientationHandler" type="Node3D" parent="Player"]
-script = ExtResource("2_k4xbn")
-OrientationCorrectionTime = 0.2
-
-[node name="RayCast3D" type="RayCast3D" parent="Player/OrientationHandler"]
-target_position = Vector3(0, -5, 0)
-debug_shape_custom_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
-debug_shape_thickness = 4
-
-[node name="Head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936371, 0)
-script = ExtResource("2_c2tmr")
-
-[node name="RayCast3D" type="RayCast3D" parent="Player/Head"]
-target_position = Vector3(0, 0, -3)
-collide_with_areas = true
-debug_shape_custom_color = Color(0.694118, 0.0588235, 1, 1)
-debug_shape_thickness = 4
-
-[node name="Collider" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_3a2rb")
-
-[node name="ControlFlowHandler" type="Node" parent="Player"]
-process_mode = 3
-script = ExtResource("2_j03km")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-visible = false
-material_override = SubResource("StandardMaterial3D_j03km")
-mesh = SubResource("CapsuleMesh_j03km")
-
-[node name="StepStompInvoker" type="Node" parent="Player"]
-script = ExtResource("4_g2toa")
 
 [node name="CameraHandler" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27327, 3.05087, 15.8163)
 attributes = SubResource("CameraAttributesPractical_fsuf2")
+far = 20000.0
 script = ExtResource("2_3a2rb")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="CameraHandler"]
@@ -159,13 +117,24 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 29.
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.92
 directional_shadow_mode = 0
 directional_shadow_fade_start = 0.053
 
 [node name="ShipTest" parent="." instance=ExtResource("14_dsmqm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 1.02874, 79.1)
+linear_damp = 2.02
 
 [node name="RoboNpc" parent="." instance=ExtResource("16_quuxy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4487, 2.21535, -28.0227)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="TestPlanet" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5000, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/TestPlanet"]
+material_override = ExtResource("12_g2toa")
+cast_shadow = 0
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+mesh = SubResource("SphereMesh_j6277")
