@@ -11,10 +11,6 @@ public partial class ControlFlowHandler : Node
 
     public IControllable currentControllable = null;
 
-    public Vector3 playerRelativePosition = Vector3.Zero;
-
-    public Vector3 playerRelativeRotation = Vector3.Zero;
-
     public override void _Ready()
     {
         Player ??= GetParent<Player>();
@@ -41,8 +37,9 @@ public partial class ControlFlowHandler : Node
     {
         if( currentControllable is not Node3D node3D || currentControllable == Player ) return;
 
-        Player.GlobalPosition = node3D.ToGlobal( playerRelativePosition );
-        Player.GlobalRotation = node3D.GlobalRotation + playerRelativeRotation;
+            // Now transform the player's transform back to world
+            // from the calculated local transform (we calculated it beforehand).
+        Player.Transform = node3D.Transform * Player.Transform;
         SwitchControlTo( Player );
     }
 
@@ -67,7 +64,8 @@ public partial class ControlFlowHandler : Node
         
         if( currentControllable is not Node3D node3D|| currentControllable == Player ) return;
 
-        playerRelativePosition = node3D.ToLocal( Player.GlobalPosition );
-        playerRelativeRotation = Player.GlobalRotation - node3D.GlobalRotation;
+            // Transform player's transform as a local to the node
+            // to keep relative position and rotation to it.
+        Player.Transform = node3D.Transform.AffineInverse() * Player.Transform;
     }
 }
