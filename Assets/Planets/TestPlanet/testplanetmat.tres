@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://qf53rcyg3bkw" path="res://Assets/Planets/TestPlanet/testplanetmat_sss.png" id="6"]
 
 [resource]
+render_priority = -1
 albedo_texture = ExtResource("1")
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
 ao_enabled = true
 ao_texture = ExtResource("2")
-heightmap_enabled = true
 heightmap_scale = 16.0
 heightmap_deep_parallax = true
 heightmap_min_layers = 8
@@ -22,3 +22,4 @@ subsurf_scatter_strength = 1.0
 subsurf_scatter_texture = ExtResource("6")
 uv1_scale = Vector3(2, 4, 2)
 texture_filter = 0
+billboard_keep_scale = true
