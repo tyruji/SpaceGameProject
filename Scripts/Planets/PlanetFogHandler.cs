@@ -11,7 +11,6 @@ public partial class PlanetFogHandler : MeshInstance3D
         PlanetEnterHandler ??= GetParent<PlanetEnterHandler>();
     }
 
-
     public override void _Process( double delta )
     {
         var planet = PlanetEnterHandler.ClosestPlanet;
@@ -25,7 +24,7 @@ public partial class PlanetFogHandler : MeshInstance3D
         var cam_pos = PlanetEnterHandler.CameraHandler.GlobalPosition;
         GlobalPosition = cam_pos;
 
-        float planet_dist_sqr = ( cam_pos - planet.GlobalPosition ).LengthSquared();
+        float planet_dist_sqr = planet.DistanceSqrToPoint( cam_pos );
 
         float start_dist_sqr = planet.StartFogDistance * planet.StartFogDistance;
         float end_dist_sqr = planet.EndFogDistance * planet.EndFogDistance;
