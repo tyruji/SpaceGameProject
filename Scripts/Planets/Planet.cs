@@ -9,5 +9,7 @@ public partial class Planet : Node3D
     [Export]
     public float EndFogDistance { get; set; } = 700;
 
+    [Export]
+    public float PlanetEnterDistance { get; set; } = 550;
         
 }
