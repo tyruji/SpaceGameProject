@@ -88,7 +88,7 @@ public partial class PlayerOrientationHandler : Node3D
     private void UpdatePlayerBasis()
     {
         var p_up = Player.GlobalBasis.Y;
-        var t_up = targetTransform.Basis.Y;
+        var t_up = targetTransform.Basis.Y.Normalized();
         Player.UpDirection = t_up;
 
         if( p_up.IsEqualApprox( t_up ) ) return;

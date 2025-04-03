@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BiomeLibrary" load_steps=10 format=3 uid="uid://ii7j3u7ux11g"]
+
+[ext_resource type="Script" uid="uid://bj45dghymootk" path="res://Scripts/Terrain/BiomeLibrary.cs" id="1_yp1of"]
+[ext_resource type="Script" uid="uid://hp7mpouit57i" path="res://Scripts/Terrain/BlockLayers/SurfaceLayerHandler.cs" id="2_3pwxn"]
+[ext_resource type="Script" uid="uid://cg5warw3kixyl" path="res://Scripts/Terrain/BiomeGenerator.cs" id="3_gjswh"]
+
+[sub_resource type="Resource" id="Resource_pjxrw"]
+script = ExtResource("2_3pwxn")
+SurfaceBlockType = 1
+PassIndex = 0
+metadata/_custom_type_script = "uid://hp7mpouit57i"
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_fevmp"]
+
+[sub_resource type="Resource" id="Resource_lc7ec"]
+script = ExtResource("3_gjswh")
+BiomeColor = Color(0, 1, 0, 1)
+BiomeName = "Default Biome"
+Noise = SubResource("ZN_FastNoiseLite_fevmp")
+BlockLayerChain = [SubResource("Resource_pjxrw")]
+ExtraBlockLayers = []
+metadata/_custom_type_script = "uid://cg5warw3kixyl"
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_sl30a"]
+period = 320.1
+fractal_gain = 0.05
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_0iycc"]
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_2ulu1"]
+
+[resource]
+script = ExtResource("1_yp1of")
+BiomeGenerators = [SubResource("Resource_lc7ec")]
+BiomeHeightNoise = SubResource("ZN_FastNoiseLite_sl30a")
+BiomeHorizontalSelectionNoise = SubResource("ZN_FastNoiseLite_0iycc")
+BiomeVerticalSelectionNoise = SubResource("ZN_FastNoiseLite_2ulu1")
+_GenerateImage = false
+metadata/_custom_type_script = "uid://bj45dghymootk"
