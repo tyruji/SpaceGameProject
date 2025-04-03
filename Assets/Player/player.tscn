@@ -15,7 +15,7 @@ albedo_color = Color(0.643137, 1, 0.486275, 1)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Head")]
 script = ExtResource("1_5j20w")
-JumpSpeed = 9.0
+JumpSpeed = 12.0
 Head = NodePath("Head")
 
 [node name="OrientationHandler" type="Node3D" parent="."]

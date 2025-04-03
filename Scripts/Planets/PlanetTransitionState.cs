@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public static class PlanetTransitionStates
@@ -16,6 +17,7 @@ public class PlanetAwaitTransitionState : PlanetTransitionState
         var closest_planet = enterHandler.ClosestPlanet;
         var current_planet = enterHandler.CurrentPlanet;
 
+        if( closest_planet == null || current_planet == null ) return;
         if( closest_planet == current_planet ) return;
 
         var cam_pos = enterHandler.CameraHandler.GlobalPosition;
@@ -26,11 +28,16 @@ public class PlanetAwaitTransitionState : PlanetTransitionState
         if( planet_dist_sqr > enter_planet_dist_sqr ) return;
 
         ChangeState( stateHolder, PlanetTransitionStates.PLANET_LOADING_STATE );
+
+            // Hide the planet mesh.
+        ( closest_planet as Node3D )?.Hide();
     }
 }
 
 public class PlanetLoadingTransitionState : PlanetTransitionState
 {
+    public event Action<PlanetEnterHandler> OnEnterPlanet;
+
     protected static readonly Godot.Collections.Array LOAD_PROGRESS_ARR = [];
 
     public const string LEVEL_NODE_NAME = "Level"; 
@@ -64,6 +71,8 @@ public class PlanetLoadingTransitionState : PlanetTransitionState
         level_node.AddChild( world_instance );
 
         enterHandler.CurrentPlanet = planet;
+
+        OnEnterPlanet?.Invoke( enterHandler );
         ChangeState( stateHolder, PlanetTransitionStates.PLANET_AWAIT_TRANSITION_STATE );
     }
 }

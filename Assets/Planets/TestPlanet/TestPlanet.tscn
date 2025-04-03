@@ -1,0 +1,81 @@
+[gd_scene load_steps=20 format=3 uid="uid://cdyp58pn65oma"]
+
+[ext_resource type="Resource" uid="uid://ii7j3u7ux11g" path="res://Assets/Planets/TestPlanet/TestBiomeLibrary.tres" id="1_3r4kh"]
+[ext_resource type="Script" uid="uid://dle2681nrlhji" path="res://Scripts/Terrain/CustomVoxelWorldGeneratorCB.cs" id="2_psf0y"]
+[ext_resource type="Script" uid="uid://blfqqebu4qxec" path="res://Scripts/FX/StepStompElement.cs" id="3_psf0y"]
+
+[sub_resource type="VoxelStreamMemory" id="VoxelStreamMemory_3r4kh"]
+
+[sub_resource type="VoxelGeneratorMultipassCB" id="VoxelGeneratorMultipassCB_xr6m3"]
+script = ExtResource("2_psf0y")
+BiomeLibrary = ExtResource("1_3r4kh")
+metadata/_custom_type_script = "uid://dle2681nrlhji"
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_3r4kh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psf0y"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.562063, 1, 0.608283, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_xr6m3"]
+material_override_0 = SubResource("StandardMaterial3D_psf0y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrv4c"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.607843, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_med8r"]
+material_override_0 = SubResource("StandardMaterial3D_mrv4c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw2qf"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.619608, 0.854902, 0.619608)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_wbelu"]
+material_override_0 = SubResource("StandardMaterial3D_rw2qf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0fip"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.577008, 0.577008, 0.577008, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_7qqle"]
+material_override_0 = SubResource("StandardMaterial3D_m0fip")
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_uppw8"]
+bake_tangents = false
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_3r4kh"), SubResource("VoxelBlockyModelCube_xr6m3"), SubResource("VoxelBlockyModelCube_med8r"), SubResource("VoxelBlockyModelCube_wbelu"), SubResource("VoxelBlockyModelCube_7qqle")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_2i5uo"]
+library = SubResource("VoxelBlockyLibrary_uppw8")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r4kh"]
+sky_top_color = Color(0.655863, 0.364893, 0, 1)
+sky_horizon_color = Color(0.741176, 0.65098, 0.443137, 1)
+ground_bottom_color = Color(0.100316, 0.0812793, 0.0591645, 1)
+ground_horizon_color = Color(0.97524, 0.742453, 0.215479, 1)
+sun_angle_max = 146.91
+
+[sub_resource type="Sky" id="Sky_psf0y"]
+sky_material = SubResource("ProceduralSkyMaterial_3r4kh")
+
+[sub_resource type="Environment" id="Environment_xr6m3"]
+background_mode = 2
+sky = SubResource("Sky_psf0y")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = SubResource("VoxelStreamMemory_3r4kh")
+generator = SubResource("VoxelGeneratorMultipassCB_xr6m3")
+mesher = SubResource("VoxelMesherBlocky_2i5uo")
+run_stream_in_editor = false
+script = ExtResource("3_psf0y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xr6m3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.447744, 0.894162, 0, -0.894162, 0.447744, 0, 136.811, 0)
+shadow_enabled = true

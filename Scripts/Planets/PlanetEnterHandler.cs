@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static PlanetTransitionStates;
 
 public partial class PlanetEnterHandler : Node3D, IStateHolder
 {
@@ -20,12 +21,15 @@ public partial class PlanetEnterHandler : Node3D, IStateHolder
     /// </summary>
     public IPlanet CurrentPlanet { get; set; }
 
-    public State State { get; set; }
+    public State State { get; set; } = PLANET_AWAIT_TRANSITION_STATE;
 
     public override void _Ready()
     {
         CameraHandler ??= GetParent().GetNode<CameraHandler>( nameof( CameraHandler ) );
         PlanetContainer ??= GetParent().GetNode<PlanetContainer>( nameof( PlanetContainer ) );
+
+        var planet_first = PlanetContainer.GetChild<IPlanet>( 0 );
+        CurrentPlanet = planet_first;
     }
 
     public override void _Process( double delta )
@@ -41,7 +45,7 @@ public partial class PlanetEnterHandler : Node3D, IStateHolder
         {
             if( planet == CurrentPlanet ) continue;
 
-            float new_dist_sqr = ( CameraHandler.GlobalPosition - planet.GlobalPosition ).LengthSquared();
+            float new_dist_sqr = planet.DistanceSqrToPoint( CameraHandler.GlobalPosition );
 
             if( new_dist_sqr >= dist_sqr ) continue;
             dist_sqr = new_dist_sqr;
