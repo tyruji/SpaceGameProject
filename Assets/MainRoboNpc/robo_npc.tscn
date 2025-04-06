@@ -1,10 +1,31 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd0wv7pusy0ny"]
+[gd_scene load_steps=16 format=3 uid="uid://bd0wv7pusy0ny"]
 
 [ext_resource type="ArrayMesh" uid="uid://d3dbt8sqyfe8x" path="res://Assets/MainRoboNpc/Models/robotnpc_base.vox" id="1_00b8w"]
 [ext_resource type="Material" uid="uid://0065iww4kgdb" path="res://Assets/MainRoboNpc/MainRoboMat.tres" id="1_5jaex"]
+[ext_resource type="Script" uid="uid://cyit50uv46t5" path="res://Scripts/NPC/RoboNPC/MainRoboNpc.cs" id="1_40cfo"]
 [ext_resource type="ArrayMesh" uid="uid://rrnfperlp4vn" path="res://Assets/MainRoboNpc/Models/robotnpc_body.vox" id="2_5jaex"]
 [ext_resource type="ArrayMesh" uid="uid://clhqqexet7h0" path="res://Assets/MainRoboNpc/Models/robotnpc_eye.vox" id="3_40cfo"]
 [ext_resource type="ArrayMesh" uid="uid://cf26tsgchstw6" path="res://Assets/MainRoboNpc/Models/robotnpc_head.vox" id="4_kfog2"]
+[ext_resource type="Shader" uid="uid://dn6rhsofc8iir" path="res://Assets/NPC/eye_blink.gdshader" id="5_i20gy"]
+[ext_resource type="Script" uid="uid://bou3np5hiba82" path="res://Scripts/NPC/RoboNPC/RoboAnimator.cs" id="7_kfog2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ir02w"]
+render_priority = 0
+shader = ExtResource("5_i20gy")
+shader_parameter/blink_color = Color(0.303233, 0.303233, 0.303233, 1)
+shader_parameter/blink_period = 4.0
+shader_parameter/blink_length = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_i20gy"]
+size = Vector2(0.5, 0.5)
+center_offset = Vector3(0, -0.25, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i20gy"]
+render_priority = 0
+shader = ExtResource("5_i20gy")
+shader_parameter/blink_color = Color(0.303233, 0.303233, 0.303233, 1)
+shader_parameter/blink_period = 4.0
+shader_parameter/blink_length = 0.08
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_00b8w"]
 radius = 0.755746
@@ -25,6 +46,7 @@ material = SubResource("StandardMaterial3D_40cfo")
 size = Vector2(0.2, 0.2)
 
 [node name="RoboNpc" type="AnimatableBody3D"]
+script = ExtResource("1_40cfo")
 
 [node name="RobotnpcBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64142, -0.824917, 0)
@@ -37,17 +59,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799955, 0)
 material_override = ExtResource("1_5jaex")
 mesh = ExtResource("4_kfog2")
 
-[node name="EyeR" type="MeshInstance3D" parent="Head"]
+[node name="EyeRight" type="MeshInstance3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.300045, 0.301)
 material_override = ExtResource("1_5jaex")
 mesh = ExtResource("3_40cfo")
 skeleton = NodePath("../..")
 
-[node name="EyeL" type="MeshInstance3D" parent="Head"]
+[node name="BlinkLid" type="MeshInstance3D" parent="Head/EyeRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.5, 0.01417)
+material_override = SubResource("ShaderMaterial_ir02w")
+mesh = SubResource("QuadMesh_i20gy")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="Head"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 1, 0.26, 0.300045, 0.301)
 material_override = ExtResource("1_5jaex")
 mesh = ExtResource("3_40cfo")
 skeleton = NodePath("../..")
+
+[node name="BlinkLid2" type="MeshInstance3D" parent="Head/EyeLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.5, 0.01417)
+material_override = SubResource("ShaderMaterial_i20gy")
+mesh = SubResource("QuadMesh_i20gy")
+skeleton = NodePath("../../EyeRight")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_5jaex")
@@ -61,3 +94,6 @@ shape = SubResource("CapsuleShape3D_00b8w")
 visible = false
 process_material = SubResource("ParticleProcessMaterial_5jaex")
 draw_pass_1 = SubResource("QuadMesh_kfog2")
+
+[node name="RoboAnimator" type="Node3D" parent="."]
+script = ExtResource("7_kfog2")
