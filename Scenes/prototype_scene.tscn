@@ -85,14 +85,13 @@ view_distance_vertical_ratio = 2.0
 [node name="Level" type="Node3D" parent="."]
 
 [node name="SpacePlanet" parent="Level" instance=ExtResource("3_sqrd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 304, 0)
 
 [node name="ShipTest" parent="." instance=ExtResource("14_dsmqm")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 305.029, 79.1)
 linear_damp = 2.02
 
 [node name="RoboNpc" parent="." instance=ExtResource("16_quuxy")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4487, 306.215, -28.0227)
+transform = Transform3D(0.691967, 0, 0.721929, 0, 1, 0, -0.721929, 0, 0.691967, -3.03357, 305.822, 58.7473)
 
 [node name="PlanetContainer" type="Node3D" parent="."]
 script = ExtResource("12_dsmqm")

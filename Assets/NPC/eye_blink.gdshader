@@ -7,11 +7,11 @@ uniform float blink_length = .2;
 float blinkAlpha( float time )
 {
 	time = mod( time, blink_period );
-	
+
 	float curve = time - blink_period + 2. * blink_length;
 	curve *= time - blink_period;
 	curve *= - 1.0 / ( blink_length * blink_length );
-	
+
 	return max( 0, curve );
 }
 void vertex()
