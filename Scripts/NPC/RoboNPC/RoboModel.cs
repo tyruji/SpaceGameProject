@@ -15,11 +15,14 @@ public partial class RoboModel : Node3D
     [Export]
     public MeshInstance3D EyeRight { get; set; }
 
+    public Vector3 HeadBasePosition { get; set; }
+
     public override void _Ready()
     {
         Head ??= GetNode<MeshInstance3D>( nameof( Head ) );
         Body ??= GetNode<MeshInstance3D>( nameof( Body ) );
         EyeLeft ??= Head.GetNode<MeshInstance3D>( nameof( EyeLeft ) );
         EyeRight??= Head.GetNode<MeshInstance3D>( nameof( EyeRight) );
+        HeadBasePosition = Head.Position;
     }
 }
