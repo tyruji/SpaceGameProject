@@ -55,10 +55,13 @@ adjustment_saturation = 1.42
 
 [node name="SpacePlanet" type="Node3D"]
 
-[node name="Garage_Ship" parent="." instance=ExtResource("1_f620i")]
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 304, 0)
+
+[node name="Garage_Ship" parent="Pivot" instance=ExtResource("1_f620i")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 80)
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="Pivot"]
 mesh_library = ExtResource("2_m4c7l")
 cell_size = Vector3(8, 8, 8)
 cell_center_y = false
@@ -70,21 +73,21 @@ StepSoundSettings = SubResource("Resource_wfj1b")
 StompSoundSettings = SubResource("Resource_36hj1")
 StepCooldown = 0.3
 
-[node name="Door" parent="." instance=ExtResource("7_1e7q6")]
+[node name="Door" parent="Pivot" instance=ExtResource("7_1e7q6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 32)
 
-[node name="Door2" parent="." instance=ExtResource("7_1e7q6")]
+[node name="Door2" parent="Pivot" instance=ExtResource("7_1e7q6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 48)
 
-[node name="Door3" parent="." instance=ExtResource("7_1e7q6")]
+[node name="Door3" parent="Pivot" instance=ExtResource("7_1e7q6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 2, -12)
 
-[node name="Settings" type="Node3D" parent="."]
+[node name="Settings" type="Node3D" parent="Pivot"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Pivot/Settings"]
 environment = SubResource("Environment_c2tmr")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Pivot/Settings"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 29.6809, 0)
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0

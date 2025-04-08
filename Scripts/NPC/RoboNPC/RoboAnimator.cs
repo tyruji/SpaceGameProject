@@ -4,22 +4,41 @@ using System;
 public partial class RoboAnimator : Node3D
 {
     [Export]
-    public MeshInstance3D Head { get; set; }
+    public RoboModel Model { get; set; }
 
     [Export]
-    public MeshInstance3D Body { get; set; }
+    public float HeadRotationPeriod { get; set; } = .7f;
 
     [Export]
-    public MeshInstance3D EyeLeft { get; set; }
+    public float HeadRotationTime { get; set; } = .6f;
 
-    [Export]
-    public MeshInstance3D EyeRight { get; set; }
+    public float timeElapsed = 0;
 
     public override void _Ready()
     {
-        Head ??= GetParent().GetNode<MeshInstance3D>( nameof( Head ) );
-        Body ??= GetParent().GetNode<MeshInstance3D>( nameof( Body ) );
-        EyeLeft ??= Head.GetNode<MeshInstance3D>( nameof( EyeLeft ) );
-        EyeRight??= Head.GetNode<MeshInstance3D>( nameof( EyeRight) );
+        Model ??= GetParent().GetNode<RoboModel>( nameof( Model ) );
+    }
+
+    public override void _Process( double delta )
+    {
+        var offset = .01f * MathHelper.FastRandomPointInUnitSphere();
+        Model.Body.Position = offset;
+        
+        Model.Head.Position = Model.HeadBasePosition - offset;
+
+        timeElapsed += ( float ) delta;
+        if( timeElapsed < HeadRotationPeriod ) return;
+        timeElapsed = 0;
+
+        var player_pos = GetNode<Node3D>( "../../Player" ).GlobalPosition;
+        // Model.Head.LookAt( player_pos, null, true );
+        var local_player_pos = Model.ToLocal( player_pos );
+        var tr = Model.Head.Transform;
+        tr.Basis = Basis.LookingAt( local_player_pos, null, true );
+        
+        var tween = CreateTween();
+        tween.TweenProperty( Model.Head, "basis", tr.Basis, HeadRotationTime )
+                                .SetTrans( Tween.TransitionType.Elastic )
+                                .SetEase( Tween.EaseType.InOut );
     }
 }
