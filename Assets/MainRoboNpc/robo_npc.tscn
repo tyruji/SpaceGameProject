@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd0wv7pusy0ny"]
+[gd_scene load_steps=18 format=3 uid="uid://bd0wv7pusy0ny"]
 
 [ext_resource type="ArrayMesh" uid="uid://d3dbt8sqyfe8x" path="res://Assets/MainRoboNpc/Models/robotnpc_base.vox" id="1_00b8w"]
 [ext_resource type="Material" uid="uid://0065iww4kgdb" path="res://Assets/MainRoboNpc/MainRoboMat.tres" id="1_5jaex"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cf26tsgchstw6" path="res://Assets/MainRoboNpc/Models/robotnpc_head.vox" id="4_kfog2"]
 [ext_resource type="Shader" uid="uid://dn6rhsofc8iir" path="res://Assets/NPC/eye_blink.gdshader" id="5_i20gy"]
 [ext_resource type="Script" uid="uid://bou3np5hiba82" path="res://Scripts/NPC/RoboNPC/RoboAnimator.cs" id="7_kfog2"]
+[ext_resource type="Script" uid="uid://die3p6es47a6" path="res://Scripts/NPC/WaypointHandler.cs" id="10_7yfr6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ir02w"]
 render_priority = 0
@@ -107,3 +108,12 @@ draw_pass_1 = SubResource("QuadMesh_kfog2")
 
 [node name="RoboAnimator" type="Node3D" parent="."]
 script = ExtResource("7_kfog2")
+
+[node name="Timer" type="Timer" parent="RoboAnimator"]
+wait_time = 0.6
+autostart = true
+
+[node name="WaypointHandler" type="Node" parent="."]
+script = ExtResource("10_7yfr6")
+
+[connection signal="timeout" from="RoboAnimator/Timer" to="RoboAnimator" method="UpdateHeadLookAtAnimation"]

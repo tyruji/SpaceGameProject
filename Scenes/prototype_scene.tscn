@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=20 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="PackedScene" uid="uid://cnlhyf2lsapee" path="res://Assets/Player/player.tscn" id="1_j6277"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
@@ -17,6 +17,14 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 30.0
 dof_blur_far_transition = -1.0
 dof_blur_amount = 0.01
+
+[sub_resource type="Curve3D" id="Curve3D_j6277"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.296941, -0.688965, -0.88863, 0, 0, 0, 0, 0, 0, -0.925, -0.716522, 3.61319, 0, 0, 0, 0, 0, 0, -6.42498, -0.841553, 2.66007),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [sub_resource type="FogMaterial" id="FogMaterial_wagny"]
 
@@ -92,6 +100,10 @@ linear_damp = 2.02
 
 [node name="RoboNpc" parent="." instance=ExtResource("16_quuxy")]
 transform = Transform3D(0.691967, 0, 0.721929, 0, 1, 0, -0.721929, 0, 0.691967, -3.03357, 305.822, 58.7473)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 305.909, 61.2326)
+curve = SubResource("Curve3D_j6277")
 
 [node name="PlanetContainer" type="Node3D" parent="."]
 script = ExtResource("12_dsmqm")
