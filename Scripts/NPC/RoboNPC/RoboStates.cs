@@ -14,3 +14,13 @@ public class RoboIdleState : RoboState
         robo.RoboAnimator.LookAtPosition = robo.Player.GlobalPosition;
     }
 }
+
+public class RoboWalkToPointState : RoboState
+{
+    public override void Handle( IStateHolder stateHolder, object arg = null )
+    {
+        if( stateHolder is not MainRoboNpc robo ) return;
+
+        robo.RoboAnimator.LookAtPosition = robo.Player.GlobalPosition;
+    }
+}
