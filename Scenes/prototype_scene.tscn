@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=21 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="PackedScene" uid="uid://cnlhyf2lsapee" path="res://Assets/Player/player.tscn" id="1_j6277"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
 [ext_resource type="PackedScene" uid="uid://dwmuhmyxjmnao" path="res://Assets/Planets/SpacePlanet/space_planet.tscn" id="3_sqrd8"]
+[ext_resource type="Script" uid="uid://j6uk3bm3wloq" path="res://Scripts/Character/NPC/TimedSetNPCPath.cs" id="6_g2toa"]
 [ext_resource type="Script" uid="uid://bswk5tpbwsuhe" path="res://Scripts/Planets/SpacePlanet.cs" id="9_j6277"]
 [ext_resource type="Script" uid="uid://bb7a4dmjgaj7k" path="res://Scripts/Planets/PlanetContainer.cs" id="12_dsmqm"]
 [ext_resource type="Texture2D" uid="uid://b4yqwmofd07f4" path="res://Assets/Planets/TestPlanet/testplanetmat_albedo.png" id="12_g2toa"]
@@ -21,7 +22,7 @@ dof_blur_amount = 0.01
 [sub_resource type="Curve3D" id="Curve3D_j6277"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.296941, -0.688965, -0.88863, 0, 0, 0, 0, 0, 0, -0.925, -0.716522, 3.61319, 0, 0, 0, 0, 0, 0, -6.42498, -0.841553, 2.66007),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.297, 305.822, 60.344, 0, 0, 0, 0, 0, 0, -0.925, 305.822, 64.846, 0, 0, 0, 0, 0, 0, -6.425, 305.822, 63.893),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -102,8 +103,9 @@ linear_damp = 2.02
 transform = Transform3D(0.691967, 0, 0.721929, 0, 1, 0, -0.721929, 0, 0.691967, -3.03357, 305.822, 58.7473)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 305.909, 61.2326)
 curve = SubResource("Curve3D_j6277")
+script = ExtResource("6_g2toa")
+NpcNodePath = NodePath("../RoboNpc")
 
 [node name="PlanetContainer" type="Node3D" parent="."]
 script = ExtResource("12_dsmqm")

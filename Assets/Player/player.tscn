@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnlhyf2lsapee"]
 
-[ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Player/Player.cs" id="1_5j20w"]
-[ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Player/PlayerOrientationHandler.cs" id="2_aqk3a"]
-[ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Player/Head.cs" id="3_rul8u"]
-[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Player/ControlFlowHandler.cs" id="4_kg0wl"]
-[ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Player/PlayerStepStompInvoker.cs" id="5_2147b"]
+[ext_resource type="Script" uid="uid://cgban4toexbo2" path="res://Scripts/Character/Player/Player.cs" id="1_5j20w"]
+[ext_resource type="Script" uid="uid://bg2r6w75pgeg6" path="res://Scripts/Character/Player/PlayerOrientationHandler.cs" id="2_aqk3a"]
+[ext_resource type="Script" uid="uid://cgu6aempkrx3p" path="res://Scripts/Character/Player/Head.cs" id="3_rul8u"]
+[ext_resource type="Script" uid="uid://gkln43hgfq6o" path="res://Scripts/Character/Player/ControlFlowHandler.cs" id="4_kg0wl"]
+[ext_resource type="Script" uid="uid://cmx62fbk5ir7c" path="res://Scripts/Character/Player/StepStompInvoker.cs" id="5_2147b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a2rb"]
 

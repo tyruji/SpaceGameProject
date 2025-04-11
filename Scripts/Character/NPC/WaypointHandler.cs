@@ -50,6 +50,11 @@ public partial class WaypointHandler : Node
 
     public eWaypointType waypointType = eWaypointType.NONE;
 
+    public Vector3 GetWalkDirection( Vector3 currentPosition )
+    {
+        return ( CurrentWaypoint - currentPosition ).Normalized();
+    }
+
     public void UpdateWaypoint( Vector3 currentPosition )
     {
         switch( waypointType )
