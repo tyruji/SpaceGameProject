@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class Player : CharacterBody3D, IControllable
+public partial class Player : CharacterBody3D, IControllable, ICharacter
 {
     public event Action<IInteractable> OnInteract;
 
@@ -25,6 +25,9 @@ public partial class Player : CharacterBody3D, IControllable
 
     [Export]
     public float MouseSensitivity { get; set; } = .12f;
+
+    [Export]
+    public bool WantsToJump { get; set; } = false;
 
     [Export]
     public Node3D Head { get; set; }
@@ -58,7 +61,7 @@ public partial class Player : CharacterBody3D, IControllable
         }
     }
 
-    public Vector3 inputDirection = Vector3.Zero;
+    public Vector3 MoveDirection { get; set; } = Vector3.Zero;
 
     public override void _Ready()
     {
@@ -78,33 +81,14 @@ public partial class Player : CharacterBody3D, IControllable
     {
         if( !EnableControl ) return;
 
-        HandleMovement( delta );
+        this.HandleBaseMovement( delta );
+        MoveAndSlide();
     }
 
     public void NotifyInteraction( IInteractable interactable )
     {
         OnInteract?.Invoke( interactable );
         interactable.Interact( this );
-    }
-
-    private void HandleMovement( double delta )
-    {
-        float dt = ( float )delta;
-
-        var up = GlobalBasis.Y;
-            // Get the projected horizontal velocity based on upward axis.
-        var upward_vel = up * Velocity.Dot( up );
-        var horizontal_vel = Velocity - upward_vel;
-        upward_vel -= dt * Gravity * up;
-        //horizontal_vel.Y = 0;
-    
-            // Add air acceleration and friction later on!
-        var acc = inputDirection.Dot( horizontal_vel ) > 0 ? Acceleration : Friction;
-
-        horizontal_vel = horizontal_vel.Lerp( inputDirection * MaxSpeed, acc * dt );
-
-        Velocity = horizontal_vel + upward_vel;
-        MoveAndSlide();
     }
 
     private void HandleMouseRotationInput( InputEvent @event )
@@ -126,22 +110,15 @@ public partial class Player : CharacterBody3D, IControllable
 
     private void HandleMovementInput( InputEvent @event )
     {
-        inputDirection = Vector3.Zero;
+        MoveDirection = Vector3.Zero;
         
         Vector2 dir = Input.GetVector( InputActions.LEFT, InputActions.RIGHT,
             InputActions.FORWARD, InputActions.BACK );
 
-        inputDirection += dir.X * GlobalBasis.X.Normalized();
-        inputDirection += dir.Y * GlobalBasis.Z.Normalized();
+        MoveDirection += dir.X * GlobalBasis.X.Normalized();
+        MoveDirection += dir.Y * GlobalBasis.Z.Normalized();
 
-        if( IsOnFloor() && Input.IsActionJustPressed( InputActions.JUMP ) )
-        {
-            //Velocity *= new Vector3( 1, 0, 1 );
-            var up = GlobalBasis.Y;
-                // Reset upward velocity to 0.
-            Velocity -= up * Velocity.Dot( up );
-            Velocity += GlobalBasis.Y * JumpSpeed;
-        }
+        WantsToJump = IsOnFloor() && Input.IsActionJustPressed( InputActions.JUMP );
 
         if( Input.IsActionJustPressed( InputActions.CANCEL ) )
         {

@@ -62,7 +62,7 @@ public partial class PlayerOrientationHandler : Node3D
             // Do this at the end of interpolation
             // to ensure we rotated fully,
             // without small error.
-        UpdatePlayerBasis();
+        UpdateCharacterBasis();
         Player.Basis = Player.Basis.Rotated( rotationAxis, rotationAngle );
     }
 
@@ -81,11 +81,11 @@ public partial class PlayerOrientationHandler : Node3D
         if( targetTransform == orientationSpace.Transform ) return;
 
         targetTransform = orientationSpace.Transform;
-        UpdatePlayerBasis();
+        UpdateCharacterBasis();
         timeElapsed = 0f;
     }
 
-    private void UpdatePlayerBasis()
+    private void UpdateCharacterBasis()
     {
         var p_up = Player.GlobalBasis.Y;
         var t_up = targetTransform.Basis.Y.Normalized();

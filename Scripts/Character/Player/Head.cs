@@ -88,7 +88,7 @@ public partial class Head : Node3D
             case eHeadBobState.Idle:
                 Position = Position.Lerp( initialHeadPosition, dt * HeadBobDampening );
 
-                if( Player.IsOnFloor() && Player.inputDirection.LengthSquared() > 0 )
+                if( Player.IsOnFloor() && Player.MoveDirection.LengthSquared() > 0 )
                 {
                     _headBobState = eHeadBobState.Bobbing;
                 }
@@ -113,7 +113,7 @@ public partial class Head : Node3D
                 Position = Position.Lerp( initialHeadPosition + offset, dt * HeadBobDampening );
                 _timeElapsed += dt;
 
-                if( !Player.IsOnFloor() || Player.inputDirection.LengthSquared() <= 0 )
+                if( !Player.IsOnFloor() || Player.MoveDirection.LengthSquared() <= 0 )
                 {
                     _headBobState = eHeadBobState.Idle;
                     _timeElapsed = 0f;
