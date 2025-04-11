@@ -36,17 +36,24 @@ public partial class RoboAnimator : Node3D
     private bool _updateBodyLookAt = false;
     private Vector3 _bodyLookAtPosition = Vector3.Zero;
 
+    private Vector3 _headInRelationToBodyPosition = Vector3.Zero;
+
     public override void _Ready()
     {
         Model ??= GetParent().GetNode<RoboModel>( nameof( Model ) );
+        _headInRelationToBodyPosition = Model.Body.ToLocal( Model.Head.GlobalPosition );
     }
 
     public override void _Process( double delta )
     {
-        BodyShake();
+            // This keeps the head attached to the body's neck when the body rotates.
+        var global_head_pos = Model.Body.ToGlobal( _headInRelationToBodyPosition ); 
+        Model.HeadBasePosition = Model.ToLocal( global_head_pos );
+
+        BodyAndHeadShake();
     }
 
-    public void BodyShake()
+    public void BodyAndHeadShake()
     {
         var offset = .01f * MathHelper.FastRandomPointInUnitSphere();
         Model.Body.Position = offset;
