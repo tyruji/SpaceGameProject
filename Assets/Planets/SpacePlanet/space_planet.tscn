@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwmuhmyxjmnao"]
+[gd_scene load_steps=13 format=3 uid="uid://dwmuhmyxjmnao"]
 
 [ext_resource type="PackedScene" uid="uid://dwayucwjjh32f" path="res://Assets/SpaceStation/Prefabs/Garage_Ship.tscn" id="1_f620i"]
+[ext_resource type="PackedScene" uid="uid://dcji7fr6l835u" path="res://Assets/SpaceStation/player_room/player_room.tscn" id="1_m4c7l"]
 [ext_resource type="MeshLibrary" uid="uid://c4tkwy28vus7r" path="res://Assets/SpaceStation/SpaceStationLibrary2.tres" id="2_m4c7l"]
 [ext_resource type="Script" uid="uid://c2s22yw8odpfu" path="res://Scripts/FX/StepStompElementAudio.cs" id="3_c2ona"]
 [ext_resource type="AudioStream" uid="uid://balrle0hougg6" path="res://Assets/Sfx/footstep_metal.wav" id="4_t7ud1"]
@@ -57,6 +58,9 @@ adjustment_saturation = 1.42
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 304, 0)
+
+[node name="player_room" parent="Pivot" instance=ExtResource("1_m4c7l")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 8, 0, -12)
 
 [node name="Garage_Ship" parent="Pivot" instance=ExtResource("1_f620i")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 80)

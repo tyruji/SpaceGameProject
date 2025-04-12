@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cy26je77vi6p3"
+path="res://.godot/imported/bed_cover.vox-f12a486b60e71ef167f988bb98bcd49c.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/player_room/bed_cover.vox"
+dest_files=["res://.godot/imported/bed_cover.vox-f12a486b60e71ef167f988bb98bcd49c.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.3
+enable_baked_lighting=true
