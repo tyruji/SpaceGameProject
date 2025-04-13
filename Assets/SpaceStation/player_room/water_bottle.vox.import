@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cnsa00isfsdww"
+path="res://.godot/imported/water_bottle.vox-04e8d7a17ca4277df39e24ef58c73baa.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/player_room/water_bottle.vox"
+dest_files=["res://.godot/imported/water_bottle.vox-04e8d7a17ca4277df39e24ef58c73baa.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.03
+enable_baked_lighting=true

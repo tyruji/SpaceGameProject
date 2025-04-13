@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bdmo211n3kskp"
+path="res://.godot/imported/beer_can.vox-07fa9313832d4429e666cadab07e3fd7.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/player_room/beer_can.vox"
+dest_files=["res://.godot/imported/beer_can.vox-07fa9313832d4429e666cadab07e3fd7.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.03
+enable_baked_lighting=true

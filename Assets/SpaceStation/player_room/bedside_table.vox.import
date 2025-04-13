@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://qvf4jusmga74"
+path="res://.godot/imported/bedside_table.vox-7194a72ede3e845e58d35a85a2962fa6.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/player_room/bedside_table.vox"
+dest_files=["res://.godot/imported/bedside_table.vox-7194a72ede3e845e58d35a85a2962fa6.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.25
+enable_baked_lighting=true
