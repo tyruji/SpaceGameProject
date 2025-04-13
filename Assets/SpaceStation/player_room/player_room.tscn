@@ -241,12 +241,24 @@ shape = SubResource("BoxShape3D_4pg5u")
 [node name="radio" parent="." instance=ExtResource("4_3x6ag")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3.48898, 2.61118, 5.93279)
 
-[node name="bed_cover" type="StaticBody3D" parent="."]
+[node name="bed_cover" type="StaticBody3D" parent="." node_paths=PackedStringArray("CameraPositionMarker")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.53751, 1.6, -7.88865)
+script = ExtResource("9_i0764")
+CameraPositionMarker = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="bed_cover"]
+transform = Transform3D(-1, -9.46852e-08, 5.90823e-08, -1.08172e-07, 0.691967, -0.721929, 2.74731e-08, -0.721929, -0.691967, 0, 0.408158, -1.40956)
 
 [node name="@MeshInstance3D@34375" type="MeshInstance3D" parent="bed_cover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, -0.6, -3.3)
 material_override = ExtResource("2_y061b")
+gi_mode = 2
+mesh = SubResource("ArrayMesh_1ji2t")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="bed_cover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, -0.6, -3.3)
+visible = false
+material_override = ExtResource("10_xsevh")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_1ji2t")
 
