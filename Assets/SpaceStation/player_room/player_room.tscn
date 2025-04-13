@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dcji7fr6l835u"]
+[gd_scene load_steps=40 format=4 uid="uid://dcji7fr6l835u"]
 
 [ext_resource type="Material" uid="uid://cnwjttq6nwgpr" path="res://Assets/GlobalMats/MainMat.tres" id="1_y061b"]
 [ext_resource type="Material" uid="uid://cxlumr5b5o3uy" path="res://Assets/GlobalMats/MainMatNoEmission.tres" id="2_y061b"]
@@ -9,8 +9,10 @@
 [ext_resource type="ArrayMesh" path="res://.godot/imported/book.vox-b4e5bb8dde869a6ef3d6469e588f5c68.model0.mesh" id="7_ykx6v"]
 [ext_resource type="ArrayMesh" path="res://.godot/imported/bedside_lamp.vox-1313259c72481dfeee6590cb369e8e8c.model0.mesh" id="8_kcvhb"]
 [ext_resource type="PackedScene" uid="uid://bku3agvo3khk2" path="res://Assets/SpaceStation/player_room/document.vox" id="8_no7u8"]
+[ext_resource type="Script" uid="uid://cl2ivl84xqjlx" path="res://Scripts/Vehicles/Chair.cs" id="9_i0764"]
 [ext_resource type="PackedScene" uid="uid://nv8puxu4r6aq" path="res://Assets/SpaceStation/Prefabs/beer_can.tscn" id="9_yl80j"]
 [ext_resource type="PackedScene" uid="uid://bspbjjyrggnho" path="res://Assets/SpaceStation/Prefabs/water_bottle.tscn" id="10_3x6ag"]
+[ext_resource type="Material" uid="uid://cbbkdhro0hfh2" path="res://Assets/GlobalMats/HighlightPulse.tres" id="10_xsevh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ergob"]
 size = Vector3(14.9739, 1, 22)
@@ -320,8 +322,19 @@ mesh = ExtResource("7_ykx6v")
 
 [node name="chair" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 2.06534, 1.48327, 3.9292)
+script = ExtResource("9_i0764")
 
-[node name="@MeshInstance3D@24281" type="MeshInstance3D" parent="chair"]
+[node name="CameraPositionMarker" type="Marker3D" parent="chair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271848, 1.48766, -0.101455)
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="chair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.5)
+visible = false
+material_override = ExtResource("10_xsevh")
+gi_mode = 2
+mesh = SubResource("ArrayMesh_od765")
+
+[node name="_MeshInstance3D_24281" type="MeshInstance3D" parent="chair"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.5)
 material_override = ExtResource("2_y061b")
 gi_mode = 2
