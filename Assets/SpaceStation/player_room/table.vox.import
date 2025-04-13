@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://dbardntgg0fl7"
+path="res://.godot/imported/table.vox-eddccade7b59a00220f8bf397963107e.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/player_room/table.vox"
+dest_files=["res://.godot/imported/table.vox-eddccade7b59a00220f8bf397963107e.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.25
+enable_baked_lighting=true

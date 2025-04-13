@@ -1,15 +1,15 @@
-[gd_scene load_steps=55 format=3 uid="uid://bek03cid3jqis"]
+[gd_scene load_steps=54 format=3 uid="uid://bek03cid3jqis"]
 
 [ext_resource type="Script" uid="uid://cbvw4disnjhej" path="res://Scripts/FX/InteractableProxy.cs" id="1_4e8sg"]
 [ext_resource type="ArrayMesh" uid="uid://8cqjmuqwa0gm" path="res://Assets/SpaceShip/shipdoor.vox" id="1_21aeu"]
-[ext_resource type="Script" uid="uid://cy8hawtde4ff3" path="res://Scripts/Vehicles/SpaceShip.cs" id="1_jnvki"]
+[ext_resource type="Script" uid="uid://cy8hawtde4ff3" path="res://Scripts/Vehicles/Spaceship/SpaceShip.cs" id="1_jnvki"]
 [ext_resource type="Script" uid="uid://dgv5643r6y6ty" path="res://Scripts/Door/AutomaticDoor.cs" id="1_xlmhg"]
 [ext_resource type="ArrayMesh" uid="uid://bhjpblsejmg4h" path="res://Assets/SpaceShip/shipglass.vox" id="2_4e8sg"]
 [ext_resource type="Script" uid="uid://b3pa4jpoeyrjv" path="res://Scripts/FX/SpaceShipParticleHandler.cs" id="2_obcha"]
-[ext_resource type="Shader" uid="uid://bvqj2r0hysqru" path="res://Shaders/AlphaPulseColor.gdshader" id="2_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://dmy4yhle41d1v" path="res://Assets/SpaceShip/ship2.vox" id="3_plchl"]
 [ext_resource type="ArrayMesh" uid="uid://cvumvhv7btb6s" path="res://Assets/SpaceShip/ship_leg.vox" id="4_xlmhg"]
-[ext_resource type="Script" uid="uid://c888lcc1juxc1" path="res://Scripts/Vehicles/ParkingBrakeButton.cs" id="5_lpa8d"]
+[ext_resource type="Script" uid="uid://c888lcc1juxc1" path="res://Scripts/Vehicles/Spaceship/ParkingBrakeButton.cs" id="5_lpa8d"]
+[ext_resource type="Material" uid="uid://cbbkdhro0hfh2" path="res://Assets/GlobalMats/HighlightPulse.tres" id="6_lpa8d"]
 
 [sub_resource type="Gradient" id="Gradient_obcha"]
 offsets = PackedFloat32Array(0, 0.436364, 0.990909)
@@ -234,14 +234,6 @@ albedo_color = Color(1, 0.766923, 0.719709, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_cp3h2"]
 size = Vector3(0.62, 0.225, 0.33)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlmhg"]
-render_priority = 0
-shader = ExtResource("2_plchl")
-shader_parameter/color = Color(1, 1, 0, 1)
-shader_parameter/pulse_speed = 5.0
-shader_parameter/min_alpha = 0.1
-shader_parameter/max_alpha = 0.5
-
 [sub_resource type="BoxMesh" id="BoxMesh_otp8q"]
 size = Vector3(1, 0.5, 1)
 
@@ -416,7 +408,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lpa8d")
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_cp3h2")
-surface_material_override/0 = SubResource("ShaderMaterial_xlmhg")
+surface_material_override/0 = ExtResource("6_lpa8d")
 
 [node name="InteractionProxy" type="Area3D" parent="." node_paths=PackedStringArray("HighlightNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24383, -10.5724)
@@ -436,7 +428,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_21aeu")
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_otp8q")
-surface_material_override/0 = SubResource("ShaderMaterial_xlmhg")
+surface_material_override/0 = ExtResource("6_lpa8d")
 
 [node name="Shipglass" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspbjjyrggnho"]
+
+[ext_resource type="Material" uid="uid://cxlumr5b5o3uy" path="res://Assets/GlobalMats/MainMatNoEmission.tres" id="1_cnf3g"]
+[ext_resource type="ArrayMesh" path="res://.godot/imported/water_bottle.vox-04e8d7a17ca4277df39e24ef58c73baa.model0.mesh" id="2_87hn7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cnf3g"]
+height = 0.417236
+radius = 0.0961914
+
+[node name="water_bottle" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+
+[node name="_MeshInstance3D_29675" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09, -0.24, -0.09)
+material_override = ExtResource("1_cnf3g")
+gi_mode = 2
+mesh = ExtResource("2_87hn7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0299072, 0)
+shape = SubResource("CylinderShape3D_cnf3g")

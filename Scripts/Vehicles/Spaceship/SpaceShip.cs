@@ -159,14 +159,8 @@ public partial class SpaceShip : RigidBody3D, IControllable, IInteractable, IOri
         tiltAngularVelocity = tiltAngularVelocity.Lerp( tilt_vel, state.Step * TiltAcceleration );
         
         state.AngularVelocity = angularVelocity + tiltAngularVelocity;
-
-        // var target_rot = Vector3.Zero;
-        // target_rot.Y = Rotation.Y;
-        // var target_vel = target_rot - Rotation;
     }
 
-        // Store the player here, their position relative to the ship,
-        // and switch control over to them, when the player leaves the ship.
     public void Interact( Node interactor ) {}
 
     private void HandleTurnOff( PhysicsDirectBodyState3D state )
