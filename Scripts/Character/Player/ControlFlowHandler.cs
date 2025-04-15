@@ -24,7 +24,9 @@ public partial class ControlFlowHandler : Node
     public override void _UnhandledInput( InputEvent @event )
     {
         if( !Input.IsActionJustPressed( InputActions.VEHICLE_EXIT ) ) return;
-        
+
+            // Some controllables dont allow the player to exit them on their own.
+        if( currentControllable is IPlayerUnexitable ) return;
         SwitchControlBackToPlayer();
     }
 

@@ -80,6 +80,10 @@ exit_vehicle={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locale/translations.en.translation", "res://Locale/translations.pl.translation")
+
 [voxel]
 
 ownership_checks=false
