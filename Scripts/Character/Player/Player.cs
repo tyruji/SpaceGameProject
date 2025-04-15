@@ -54,9 +54,13 @@ public partial class Player : CharacterBody3D, IControllable, ICharacter
     {
         get
         {
-            var mode = CameraModes.CAMERA_TIGHT_FOLLOW_MODE;
+            var mode = CameraModes.CAMERA_SMOOTH_TO_TRANSITION_MODE;
             mode.FollowTarget = Head;
+
+            var next_mode = CameraModes.CAMERA_TIGHT_FOLLOW_MODE;
+            next_mode.FollowTarget = Head;
             
+            mode.NextMode = next_mode;
             return mode;
         }
     }

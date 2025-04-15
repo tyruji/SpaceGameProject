@@ -45,9 +45,9 @@ public class CameraSmoothFollowMode : ICameraMode
 public class CameraSmoothFollowTransitionToOtherMode : ICameraMode
 {
     public Node3D FollowTarget { get; set; }
-    public float RotationDampening { get; set; } = 6f;
-    public float PositionDampening { get; set; } = 10f;
-    public float MinDistanceToTargetForTransition { get; set; } = .2f;
+    public float RotationDampening { get; set; } = 32f;
+    public float PositionDampening { get; set; } = 32f;
+    public float MinDistanceToTargetForTransition { get; set; } = .1f;
     public ICameraMode NextMode { get; set; } = CameraModes.CAMERA_TIGHT_FOLLOW_MODE;
 
     public void Handle( CameraHandler cameraHandler, double delta )
@@ -66,9 +66,9 @@ public class CameraSmoothFollowTransitionToOtherMode : ICameraMode
 
         cameraHandler.GlobalTransform = global_tr;
 
-        var distance = cameraHandler.GlobalPosition - FollowTarget.GlobalPosition;
+        var dist_sqr = cameraHandler.GlobalPosition.DistanceSquaredTo( FollowTarget.GlobalPosition );
         var min_d = MinDistanceToTargetForTransition;
-        if( distance.LengthSquared() >= min_d * min_d ) return;
+        if( dist_sqr >= min_d * min_d ) return;
 
         cameraHandler.CameraMode = NextMode;
     }
@@ -79,7 +79,7 @@ public class CameraTightSmoothBasisChangeMode : ICameraMode
     public Node3D FollowTarget { get; set; }
     public Node3D BasisDetectNode { get; set; }
     public float RotationDampening { get; set; } = 6f;
-    public float MinDistanceToTargetForTransition { get; set; } = .5f;
+    public float MinDistanceToTargetForTransition { get; set; } = .1f;
 
     public void Handle( CameraHandler cameraHandler, double delta )
     {

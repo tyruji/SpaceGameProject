@@ -37,11 +37,15 @@ public partial class ControlFlowHandler : Node
 
     public void SwitchControlBackToPlayer()
     {
-        if( currentControllable is not Node3D node3D || currentControllable == Player ) return;
+        if( currentControllable == Player ) return;
 
-            // Now transform the player's transform back to world
-            // from the calculated local transform (we calculated it beforehand).
-        Player.Transform = node3D.Transform * Player.Transform;
+        if( currentControllable is Node3D node3D )
+        {
+                // Transform the player's transform back to world
+                // from the calculated local transform (we calculated it beforehand).
+            Player.Transform = node3D.Transform * Player.Transform;
+        }
+        
         SwitchControlTo( Player );
     }
 
@@ -64,7 +68,7 @@ public partial class ControlFlowHandler : Node
         currentControllable.EnableControl = true;
         CameraHandler.CameraMode = currentControllable.CameraMode;
         
-        if( currentControllable is not Node3D node3D|| currentControllable == Player ) return;
+        if( currentControllable is not Node3D node3D || currentControllable == Player ) return;
 
             // Transform player's transform as a local to the node
             // to keep relative position and rotation to it.
