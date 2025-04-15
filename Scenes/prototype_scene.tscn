@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=25 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="PackedScene" uid="uid://cnlhyf2lsapee" path="res://Assets/Player/player.tscn" id="1_j6277"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bb7a4dmjgaj7k" path="res://Scripts/Planets/PlanetContainer.cs" id="12_dsmqm"]
 [ext_resource type="Texture2D" uid="uid://b4yqwmofd07f4" path="res://Assets/Planets/TestPlanet/testplanetmat_albedo.png" id="12_g2toa"]
 [ext_resource type="Script" uid="uid://ciyema7qqf7br" path="res://Scripts/Planets/Planet.cs" id="12_wagny"]
+[ext_resource type="Script" uid="uid://c3526way25ka4" path="res://Scripts/Utility/NarrativeHelper.cs" id="13_wagny"]
 [ext_resource type="PackedScene" uid="uid://bek03cid3jqis" path="res://Assets/SpaceShip/space_ship1.tscn" id="14_dsmqm"]
 [ext_resource type="Script" uid="uid://bopjhcd4s6yvs" path="res://Scripts/Planets/PlanetEnterHandler.cs" id="15_k4xbn"]
 [ext_resource type="Script" uid="uid://dt66hxdbn1urk" path="res://Scripts/Planets/PlanetFogHandler.cs" id="16_btq7v"]
@@ -74,13 +75,91 @@ flip_faces = true
 radius = 100.0
 height = 200.0
 
+[sub_resource type="Animation" id="Animation_dsmqm"]
+resource_name = "test"
+length = 2.1195
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NarrativeHelper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"FreeCamera"
+}, {
+"args": [],
+"method": &"ReturnCameraToPlayer"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraHandler:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(12.0099, 306.047, -4.12868), Vector3(12.0099, 306.047, -4.12868)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraHandler:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.523596, 1.56883, -0.00392987), Vector3(0.523596, 1.56883, -0.00392987)]
+}
+
+[sub_resource type="Animation" id="Animation_wagny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraHandler:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.8345, 305.98, -4.12868)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraHandler:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523596, 1.56883, -0.00392987)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4xbn"]
+_data = {
+&"RESET": SubResource("Animation_wagny"),
+&"test": SubResource("Animation_dsmqm")
+}
+
 [node name="PrototypeScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_j6277")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 4.8783, 311.526, 86.0317)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 10.0316, 306.144, -6.88919)
 
 [node name="CameraHandler" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27327, 307.051, 15.8163)
+transform = Transform3D(-4.70318e-08, 0.5, 0.866025, -0.00340336, 0.86602, -0.499997, -0.999994, -0.00294742, 0.00170164, 11.8345, 305.98, -4.12868)
 attributes = SubResource("CameraAttributesPractical_fsuf2")
 far = 20000.0
 script = ExtResource("2_3a2rb")
@@ -143,5 +222,14 @@ ignore_time_scale = true
 material_override = SubResource("StandardMaterial3D_k4xbn")
 mesh = SubResource("SphereMesh_k4xbn")
 script = ExtResource("16_btq7v")
+
+[node name="NarrativeHelper" type="Node" parent="."]
+script = ExtResource("13_wagny")
+
+[node name="CutsceneAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k4xbn")
+}
+autoplay = "test"
 
 [connection signal="timeout" from="PlanetEnterHandler/Timer" to="PlanetEnterHandler" method="UpdateClosestPlanet"]
