@@ -5,6 +5,8 @@ public partial class CameraHandler : Camera3D
 {
     public ICameraMode CameraMode { get; set; }
 
+    public static FreeCameraControllable FreeCameraControllable => new FreeCameraControllable(); 
+
     public override void _Process( double delta )
     {
         CameraMode?.Handle( this, delta );

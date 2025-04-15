@@ -2,6 +2,8 @@ using Godot;
 
 public static class CameraModes
 {
+    public static readonly CameraNoneMode CAMERA_NONE_MODE = new CameraNoneMode();
+
     public static readonly CameraSmoothFollowMode CAMERA_SMOOTH_FOLLOW_MODE = new CameraSmoothFollowMode();
 
     public static readonly CameraTightFollowMode CAMERA_TIGHT_FOLLOW_MODE = new CameraTightFollowMode();
@@ -9,6 +11,11 @@ public static class CameraModes
     public static readonly CameraSmoothFollowTransitionToOtherMode CAMERA_SMOOTH_TO_TRANSITION_MODE = new CameraSmoothFollowTransitionToOtherMode();
 
     public static readonly CameraTightSmoothBasisChangeMode CAMERA_TIGHT_BASIS_CHANGE_SMOOTH_MODE = new CameraTightSmoothBasisChangeMode();
+}
+
+public class CameraNoneMode : ICameraMode
+{
+    public void Handle( CameraHandler cameraHandler, double delta ) {}
 }
 
 public class CameraSmoothFollowMode : ICameraMode
