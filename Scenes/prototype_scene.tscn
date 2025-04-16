@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbvn3a1nur7p7"]
+[gd_scene load_steps=27 format=3 uid="uid://bbvn3a1nur7p7"]
 
 [ext_resource type="PackedScene" uid="uid://cnlhyf2lsapee" path="res://Assets/Player/player.tscn" id="1_j6277"]
 [ext_resource type="Script" uid="uid://dova88ckm60fj" path="res://Scripts/Camera/CameraHandler.cs" id="2_3a2rb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c3526way25ka4" path="res://Scripts/Narrative/NarrativeHelper.cs" id="13_wagny"]
 [ext_resource type="PackedScene" uid="uid://bek03cid3jqis" path="res://Assets/SpaceShip/space_ship1.tscn" id="14_dsmqm"]
 [ext_resource type="PackedScene" uid="uid://dtikojp8lsnt2" path="res://Assets/UI/dialogue_system.tscn" id="14_k4xbn"]
+[ext_resource type="AudioStream" uid="uid://cy3bdo8ktfvny" path="res://Assets/Sfx/Robob/test.ogg" id="14_quuxy"]
 [ext_resource type="Script" uid="uid://bopjhcd4s6yvs" path="res://Scripts/Planets/PlanetEnterHandler.cs" id="15_k4xbn"]
 [ext_resource type="Script" uid="uid://dt66hxdbn1urk" path="res://Scripts/Planets/PlanetFogHandler.cs" id="16_btq7v"]
 [ext_resource type="PackedScene" uid="uid://bd0wv7pusy0ny" path="res://Assets/MainRoboNpc/robo_npc.tscn" id="16_quuxy"]
@@ -102,10 +103,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.523596, 1.56883, -0.00392987)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneAnimator/AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneAnimator/AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_dsmqm"]
 resource_name = "test"
-length = 2.1195
+length = 17.1815
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,10 +155,10 @@ tracks/1/path = NodePath("CameraHandler:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.03333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(12.0099, 306.047, -4.12868), Vector3(12.0099, 306.047, -4.12868)]
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(12.0099, 306.047, -4.12868)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -142,10 +167,10 @@ tracks/2/path = NodePath("CameraHandler:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.03333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.523596, 1.56883, -0.00392987), Vector3(0.523596, 1.56883, -0.00392987)]
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(0.523596, 1.56883, -0.00392987)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -157,9 +182,33 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1.93333),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["Robob", "test", 8.0],
+"args": ["Robob", "test", 15.0],
 "method": &"ShowDialogue"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutsceneAnimator/AudioStreamPlayer:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_quuxy")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneAnimator/AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4xbn"]
@@ -246,6 +295,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_k4xbn")
 }
 autoplay = "test"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimator"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
