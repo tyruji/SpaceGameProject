@@ -14,8 +14,13 @@ albedo_color = Color(0.643137, 1, 0.486275, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j03km"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Head")]
+floor_constant_speed = true
+floor_max_angle = 0.872665
+floor_snap_length = 1.0
 script = ExtResource("1_5j20w")
-JumpSpeed = 12.0
+MaxSpeed = 16.0
+JumpSpeed = 10.0
+Acceleration = 4.0
 Head = NodePath("Head")
 
 [node name="OrientationHandler" type="Node3D" parent="."]
