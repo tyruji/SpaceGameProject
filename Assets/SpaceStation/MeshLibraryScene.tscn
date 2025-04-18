@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vr1f3qwoelml"]
+[gd_scene load_steps=40 format=3 uid="uid://vr1f3qwoelml"]
 
 [ext_resource type="ArrayMesh" uid="uid://dvb0wxywoqys3" path="res://Assets/SpaceStation/Corridor_4_way.vox" id="1_xwem0"]
 [ext_resource type="ArrayMesh" uid="uid://blnt66nf4rtax" path="res://Assets/SpaceStation/Corridor_DOOR.vox" id="2_5vclt"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b4h4pcdbaaw8m" path="res://Assets/SpaceStation/Corridor_TURN_LEFT.vox" id="6_5lvr2"]
 [ext_resource type="ArrayMesh" uid="uid://bb1kjfadujxcc" path="res://Assets/SpaceStation/Corridor_TURN_RIGHT.vox" id="7_k7j0t"]
 [ext_resource type="ArrayMesh" uid="uid://dfyotym8rarqn" path="res://Assets/SpaceStation/STATION_DOOR.vox" id="8_rq35p"]
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Corridor_SLOPE_STRAIGHT.vox-3efce7c0b760e0175de72743c97b6c09.model0.mesh" id="10_gnc4p"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xwem0"]
 data = PackedVector3Array(-4, 1, 1, -1, 1, 1, -1, 1, 2, -1, 1, 2, -4, 1, 2, -4, 1, 1, -4, 1, -1, 4, 1, -1, 4, 1, 1, 4, 1, 1, -4, 1, 1, -4, 1, -1, -4, 1, -2, -1, 1, -2, -1, 1, -1, -1, 1, -1, -4, 1, -1, -4, 1, -2, -2, 1, 2, -1, 1, 2, -1, 1, 4, -1, 1, 4, -2, 1, 4, -2, 1, 2, -2, 1, -4, -1, 1, -4, -1, 1, -2, -1, 1, -2, -2, 1, -2, -2, 1, -4, -1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, -1, 1, 4, -1, 1, 1, -1, 1, -4, 1, 1, -4, 1, 1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -4, 1, 1, 1, 2, 1, 1, 2, 1, 4, 2, 1, 4, 1, 1, 4, 1, 1, 1, 1, 1, -4, 2, 1, -4, 2, 1, -1, 2, 1, -1, 1, 1, -1, 1, 1, -4, 2, 1, 1, 4, 1, 1, 4, 1, 2, 4, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, -2, 4, 1, -2, 4, 1, -1, 4, 1, -1, 2, 1, -1, 2, 1, -2, -4, 2, 2, -2, 2, 2, -2, 2, 3, -2, 2, 3, -4, 2, 3, -4, 2, 2, -4, 2, -3, -2, 2, -3, -2, 2, -2, -2, 2, -2, -4, 2, -2, -4, 2, -3, -3, 2, 3, -2, 2, 3, -2, 2, 4, -2, 2, 4, -3, 2, 4, -3, 2, 3, -3, 2, -4, -2, 2, -4, -2, 2, -3, -2, 2, -3, -3, 2, -3, -3, 2, -4, 2, 2, 2, 3, 2, 2, 3, 2, 4, 3, 2, 4, 2, 2, 4, 2, 2, 2, 2, 2, -4, 3, 2, -4, 3, 2, -2, 3, 2, -2, 2, 2, -2, 2, 2, -4, 3, 2, 2, 4, 2, 2, 4, 2, 3, 4, 2, 3, 3, 2, 3, 3, 2, 2, 3, 2, -3, 4, 2, -3, 4, 2, -2, 4, 2, -2, 3, 2, -2, 3, 2, -3, -4, 7, 3, -3, 7, 3, -3, 7, 4, -3, 7, 4, -4, 7, 4, -4, 7, 3, -4, 7, -4, -3, 7, -4, -3, 7, -3, -3, 7, -3, -4, 7, -3, -4, 7, -4, 3, 7, 3, 4, 7, 3, 4, 7, 4, 4, 7, 4, 3, 7, 4, 3, 7, 3, 3, 7, -4, 4, 7, -4, 4, 7, -3, 4, 7, -3, 3, 7, -3, 3, 7, -4, -4, 8, -3, 4, 8, -3, 4, 8, 3, 4, 8, 3, -4, 8, 3, -4, 8, -3, -3, 8, 3, 3, 8, 3, 3, 8, 4, 3, 8, 4, -3, 8, 4, -3, 8, 3, -3, 8, -4, 3, 8, -4, 3, 8, -3, 3, 8, -3, -3, 8, -3, -3, 8, -4, -1, 0, 3, -1, 0, 1, -4, 0, 1, -4, 0, 1, -4, 0, 3, -1, 0, 3, 4, 0, 1, 4, 0, -1, -4, 0, -1, -4, 0, -1, -4, 0, 1, 4, 0, 1, -1, 0, -1, -1, 0, -3, -4, 0, -3, -4, 0, -3, -4, 0, -1, -1, 0, -1, -1, 0, 4, -1, 0, 3, -3, 0, 3, -3, 0, 3, -3, 0, 4, -1, 0, 4, -1, 0, -3, -1, 0, -4, -3, 0, -4, -3, 0, -4, -3, 0, -3, -1, 0, -3, 1, 0, 4, 1, 0, 1, -1, 0, 1, -1, 0, 1, -1, 0, 4, 1, 0, 4, 1, 0, -1, 1, 0, -4, -1, 0, -4, -1, 0, -4, -1, 0, -1, 1, 0, -1, 3, 0, 4, 3, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 4, 3, 0, 4, 3, 0, -1, 3, 0, -4, 1, 0, -4, 1, 0, -4, 1, 0, -1, 3, 0, -1, 4, 0, 3, 4, 0, 1, 3, 0, 1, 3, 0, 1, 3, 0, 3, 4, 0, 3, 4, 0, -1, 4, 0, -3, 3, 0, -3, 3, 0, -3, 3, 0, -1, 4, 0, -1, -3, 1, 4, -3, 1, 3, -4, 1, 3, -4, 1, 3, -4, 1, 4, -3, 1, 4, -3, 1, -3, -3, 1, -4, -4, 1, -4, -4, 1, -4, -4, 1, -3, -3, 1, -3, 4, 1, 4, 4, 1, 3, 3, 1, 3, 3, 1, 3, 3, 1, 4, 4, 1, 4, 4, 1, -3, 4, 1, -4, 3, 1, -4, 3, 1, -4, 3, 1, -3, 4, 1, -3, -2, 5, 3, -2, 5, 2, -4, 5, 2, -4, 5, 2, -4, 5, 3, -2, 5, 3, 4, 5, 1, 4, 5, -1, -4, 5, -1, -4, 5, -1, -4, 5, 1, 4, 5, 1, -2, 5, -2, -2, 5, -3, -4, 5, -3, -4, 5, -3, -4, 5, -2, -2, 5, -2, -2, 5, 4, -2, 5, 3, -3, 5, 3, -3, 5, 3, -3, 5, 4, -2, 5, 4, -2, 5, -3, -2, 5, -4, -3, 5, -4, -3, 5, -4, -3, 5, -3, -2, 5, -3, 1, 5, 4, 1, 5, 1, -1, 5, 1, -1, 5, 1, -1, 5, 4, 1, 5, 4, 1, 5, -1, 1, 5, -4, -1, 5, -4, -1, 5, -4, -1, 5, -1, 1, 5, -1, 3, 5, 4, 3, 5, 2, 2, 5, 2, 2, 5, 2, 2, 5, 4, 3, 5, 4, 3, 5, -2, 3, 5, -4, 2, 5, -4, 2, 5, -4, 2, 5, -2, 3, 5, -2, 4, 5, 3, 4, 5, 2, 3, 5, 2, 3, 5, 2, 3, 5, 3, 4, 5, 3, 4, 5, -2, 4, 5, -3, 3, 5, -3, 3, 5, -3, 3, 5, -2, 4, 5, -2, -1, 6, 2, -1, 6, 1, -4, 6, 1, -4, 6, 1, -4, 6, 2, -1, 6, 2, -1, 6, -1, -1, 6, -2, -4, 6, -2, -4, 6, -2, -4, 6, -1, -1, 6, -1, -1, 6, 4, -1, 6, 2, -2, 6, 2, -2, 6, 2, -2, 6, 4, -1, 6, 4, -1, 6, -2, -1, 6, -4, -2, 6, -4, -2, 6, -4, -2, 6, -2, -1, 6, -2, 2, 6, 4, 2, 6, 1, 1, 6, 1, 1, 6, 1, 1, 6, 4, 2, 6, 4, 2, 6, -1, 2, 6, -4, 1, 6, -4, 1, 6, -4, 1, 6, -1, 2, 6, -1, 4, 6, 2, 4, 6, 1, 2, 6, 1, 2, 6, 1, 2, 6, 2, 4, 6, 2, 4, 6, -1, 4, 6, -2, 2, 6, -2, 2, 6, -2, 2, 6, -1, 4, 6, -1, -4, 7, 3, -4, 7, 4, -4, 1, 4, -4, 1, 4, -4, 1, 3, -4, 7, 3, -4, 2, 2, -4, 2, 3, -4, 0, 3, -4, 0, 3, -4, 0, 2, -4, 2, 2, -4, 8, 2, -4, 8, 3, -4, 5, 3, -4, 5, 3, -4, 5, 2, -4, 8, 2, -4, 1, 1, -4, 1, 2, -4, 0, 2, -4, 0, 2, -4, 0, 1, -4, 1, 1, -4, 7, 1, -4, 7, 2, -4, 6, 2, -4, 6, 2, -4, 6, 1, -4, 7, 1, -4, 8, -3, -4, 8, 2, -4, 7, 2, -4, 7, 2, -4, 7, -3, -4, 8, -3, -4, 1, -1, -4, 1, 1, -4, 0, 1, -4, 0, 1, -4, 0, -1, -4, 1, -1, -4, 7, -1, -4, 7, 1, -4, 5, 1, -4, 5, 1, -4, 5, -1, -4, 7, -1, -4, 1, -3, -4, 1, -1, -4, 0, -1, -4, 0, -1, -4, 0, -3, -4, 1, -3, -4, 7, -2, -4, 7, -1, -4, 6, -1, -4, 6, -1, -4, 6, -2, -4, 7, -2, -4, 2, -4, -4, 2, -2, -4, 1, -2, -4, 1, -2, -4, 1, -4, -4, 2, -4, -4, 7, -4, -4, 7, -2, -4, 5, -2, -4, 5, -2, -4, 5, -4, -4, 7, -4, -4, 5, -4, -4, 5, -3, -4, 2, -3, -4, 2, -3, -4, 2, -4, -4, 5, -4, -3, 1, 3, -3, 1, 4, -3, 0, 4, -3, 0, 4, -3, 0, 3, -3, 1, 3, -3, 8, 3, -3, 8, 4, -3, 7, 4, -3, 7, 4, -3, 7, 3, -3, 8, 3, -3, 1, -4, -3, 1, -3, -3, 0, -3, -3, 0, -3, -3, 0, -4, -3, 1, -4, -3, 8, -4, -3, 8, -3, -3, 7, -3, -3, 7, -3, -3, 7, -4, -3, 8, -4, -1, 6, 1, -1, 6, 4, -1, 5, 4, -1, 5, 4, -1, 5, 1, -1, 6, 1, -1, 6, -4, -1, 6, -1, -1, 5, -1, -1, 5, -1, -1, 5, -4, -1, 6, -4, 2, 2, 2, 2, 2, 4, 2, 1, 4, 2, 1, 4, 2, 1, 2, 2, 2, 2, 2, 6, 2, 2, 6, 4, 2, 5, 4, 2, 5, 4, 2, 5, 2, 2, 6, 2, 2, 2, -4, 2, 2, -2, 2, 1, -2, 2, 1, -2, 2, 1, -4, 2, 2, -4, 2, 6, -4, 2, 6, -2, 2, 5, -2, 2, 5, -2, 2, 5, -4, 2, 6, -4, 3, 5, 3, 3, 5, 4, 3, 2, 4, 3, 2, 4, 3, 2, 3, 3, 5, 3, 3, 5, -4, 3, 5, -3, 3, 2, -3, 3, 2, -3, 3, 2, -4, 3, 5, -4, -3, 5, 3, -3, 2, 3, -3, 2, 4, -3, 2, 4, -3, 5, 4, -3, 5, 3, -3, 5, -4, -3, 2, -4, -3, 2, -3, -3, 2, -3, -3, 5, -3, -3, 5, -4, -2, 2, 2, -2, 1, 2, -2, 1, 4, -2, 1, 4, -2, 2, 4, -2, 2, 2, -2, 6, 2, -2, 5, 2, -2, 5, 4, -2, 5, 4, -2, 6, 4, -2, 6, 2, -2, 2, -4, -2, 1, -4, -2, 1, -2, -2, 1, -2, -2, 2, -2, -2, 2, -4, -2, 6, -4, -2, 5, -4, -2, 5, -2, -2, 5, -2, -2, 6, -2, -2, 6, -4, 1, 6, 1, 1, 5, 1, 1, 5, 4, 1, 5, 4, 1, 6, 4, 1, 6, 1, 1, 6, -4, 1, 5, -4, 1, 5, -1, 1, 5, -1, 1, 6, -1, 1, 6, -4, 3, 1, 3, 3, 0, 3, 3, 0, 4, 3, 0, 4, 3, 1, 4, 3, 1, 3, 3, 8, 3, 3, 7, 3, 3, 7, 4, 3, 7, 4, 3, 8, 4, 3, 8, 3, 3, 1, -4, 3, 0, -4, 3, 0, -3, 3, 0, -3, 3, 1, -3, 3, 1, -4, 3, 8, -4, 3, 7, -4, 3, 7, -3, 3, 7, -3, 3, 8, -3, 3, 8, -4, 4, 7, 3, 4, 1, 3, 4, 1, 4, 4, 1, 4, 4, 7, 4, 4, 7, 3, 4, 2, 2, 4, 0, 2, 4, 0, 3, 4, 0, 3, 4, 2, 3, 4, 2, 2, 4, 8, 2, 4, 5, 2, 4, 5, 3, 4, 5, 3, 4, 8, 3, 4, 8, 2, 4, 1, 1, 4, 0, 1, 4, 0, 2, 4, 0, 2, 4, 1, 2, 4, 1, 1, 4, 7, 1, 4, 6, 1, 4, 6, 2, 4, 6, 2, 4, 7, 2, 4, 7, 1, 4, 8, -3, 4, 7, -3, 4, 7, 2, 4, 7, 2, 4, 8, 2, 4, 8, -3, 4, 1, -1, 4, 0, -1, 4, 0, 1, 4, 0, 1, 4, 1, 1, 4, 1, -1, 4, 7, -1, 4, 5, -1, 4, 5, 1, 4, 5, 1, 4, 7, 1, 4, 7, -1, 4, 1, -3, 4, 0, -3, 4, 0, -1, 4, 0, -1, 4, 1, -1, 4, 1, -3, 4, 7, -2, 4, 6, -2, 4, 6, -1, 4, 6, -1, 4, 7, -1, 4, 7, -2, 4, 2, -4, 4, 1, -4, 4, 1, -2, 4, 1, -2, 4, 2, -2, 4, 2, -4, 4, 7, -4, 4, 5, -4, 4, 5, -2, 4, 5, -2, 4, 7, -2, 4, 7, -4, 4, 5, -4, 4, 2, -4, 4, 2, -3, 4, 2, -3, 4, 5, -3, 4, 5, -4, -3, 0, 4, -3, 1, 4, -1, 1, 4, -1, 1, 4, -1, 0, 4, -3, 0, 4, -1, 0, 4, -1, 1, 4, 1, 1, 4, 1, 1, 4, 1, 0, 4, -1, 0, 4, 1, 0, 4, 1, 1, 4, 3, 1, 4, 3, 1, 4, 3, 0, 4, 1, 0, 4, -4, 1, 4, -4, 2, 4, -2, 2, 4, -2, 2, 4, -2, 1, 4, -4, 1, 4, 2, 1, 4, 2, 2, 4, 4, 2, 4, 4, 2, 4, 4, 1, 4, 2, 1, 4, -4, 2, 4, -4, 7, 4, -3, 7, 4, -3, 7, 4, -3, 2, 4, -4, 2, 4, 3, 2, 4, 3, 7, 4, 4, 7, 4, 4, 7, 4, 4, 2, 4, 3, 2, 4, -3, 5, 4, -3, 8, 4, -2, 8, 4, -2, 8, 4, -2, 5, 4, -3, 5, 4, -1, 5, 4, -1, 8, 4, 1, 8, 4, 1, 8, 4, 1, 5, 4, -1, 5, 4, 2, 5, 4, 2, 8, 4, 3, 8, 4, 3, 8, 4, 3, 5, 4, 2, 5, 4, -2, 6, 4, -2, 7, 4, -1, 7, 4, -1, 7, 4, -1, 6, 4, -2, 6, 4, 1, 6, 4, 1, 7, 4, 2, 7, 4, 2, 7, 4, 2, 6, 4, 1, 6, 4, -2, 7, 4, -2, 8, 4, -1, 8, 4, -1, 8, 4, -1, 7, 4, -2, 7, 4, 1, 7, 4, 1, 8, 4, 2, 8, 4, 2, 8, 4, 2, 7, 4, 1, 7, 4, -4, 0, 3, -4, 1, 3, -3, 1, 3, -3, 1, 3, -3, 0, 3, -4, 0, 3, 3, 0, 3, 3, 1, 3, 4, 1, 3, 4, 1, 3, 4, 0, 3, 3, 0, 3, -4, 7, 3, -4, 8, 3, -3, 8, 3, -3, 8, 3, -3, 7, 3, -4, 7, 3, 3, 7, 3, 3, 8, 3, 4, 8, 3, 4, 8, 3, 4, 7, 3, 3, 7, 3, -4, 5, 1, -4, 6, 1, -1, 6, 1, -1, 6, 1, -1, 5, 1, -4, 5, 1, 1, 5, 1, 1, 6, 1, 4, 6, 1, 4, 6, 1, 4, 5, 1, 1, 5, 1, -4, 1, -2, -4, 2, -2, -2, 2, -2, -2, 2, -2, -2, 1, -2, -4, 1, -2, 2, 1, -2, 2, 2, -2, 4, 2, -2, 4, 2, -2, 4, 1, -2, 2, 1, -2, -4, 5, -2, -4, 6, -2, -2, 6, -2, -2, 6, -2, -2, 5, -2, -4, 5, -2, 2, 5, -2, 2, 6, -2, 4, 6, -2, 4, 6, -2, 4, 5, -2, 2, 5, -2, -4, 2, -3, -4, 5, -3, -3, 5, -3, -3, 5, -3, -3, 2, -3, -4, 2, -3, 3, 2, -3, 3, 5, -3, 4, 5, -3, 4, 5, -3, 4, 2, -3, 3, 2, -3, -3, 5, 3, -4, 5, 3, -4, 2, 3, -4, 2, 3, -3, 2, 3, -3, 5, 3, 4, 5, 3, 3, 5, 3, 3, 2, 3, 3, 2, 3, 4, 2, 3, 4, 5, 3, -2, 2, 2, -4, 2, 2, -4, 1, 2, -4, 1, 2, -2, 1, 2, -2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 4, 1, 2, 4, 2, 2, -2, 6, 2, -4, 6, 2, -4, 5, 2, -4, 5, 2, -2, 5, 2, -2, 6, 2, 4, 6, 2, 2, 6, 2, 2, 5, 2, 2, 5, 2, 4, 5, 2, 4, 6, 2, -1, 6, -1, -4, 6, -1, -4, 5, -1, -4, 5, -1, -1, 5, -1, -1, 6, -1, 4, 6, -1, 1, 6, -1, 1, 5, -1, 1, 5, -1, 4, 5, -1, 4, 6, -1, -3, 1, -3, -4, 1, -3, -4, 0, -3, -4, 0, -3, -3, 0, -3, -3, 1, -3, 4, 1, -3, 3, 1, -3, 3, 0, -3, 3, 0, -3, 4, 0, -3, 4, 1, -3, -3, 8, -3, -4, 8, -3, -4, 7, -3, -4, 7, -3, -3, 7, -3, -3, 8, -3, 4, 8, -3, 3, 8, -3, 3, 7, -3, 3, 7, -3, 4, 7, -3, 4, 8, -3, -1, 1, -4, -3, 1, -4, -3, 0, -4, -3, 0, -4, -1, 0, -4, -1, 1, -4, 1, 1, -4, -1, 1, -4, -1, 0, -4, -1, 0, -4, 1, 0, -4, 1, 1, -4, 3, 1, -4, 1, 1, -4, 1, 0, -4, 1, 0, -4, 3, 0, -4, 3, 1, -4, -2, 2, -4, -4, 2, -4, -4, 1, -4, -4, 1, -4, -2, 1, -4, -2, 2, -4, 4, 2, -4, 2, 2, -4, 2, 1, -4, 2, 1, -4, 4, 1, -4, 4, 2, -4, -3, 7, -4, -4, 7, -4, -4, 2, -4, -4, 2, -4, -3, 2, -4, -3, 7, -4, 4, 7, -4, 3, 7, -4, 3, 2, -4, 3, 2, -4, 4, 2, -4, 4, 7, -4, -2, 8, -4, -3, 8, -4, -3, 5, -4, -3, 5, -4, -2, 5, -4, -2, 8, -4, 1, 8, -4, -1, 8, -4, -1, 5, -4, -1, 5, -4, 1, 5, -4, 1, 8, -4, 3, 8, -4, 2, 8, -4, 2, 5, -4, 2, 5, -4, 3, 5, -4, 3, 8, -4, -1, 7, -4, -2, 7, -4, -2, 6, -4, -2, 6, -4, -1, 6, -4, -1, 7, -4, 2, 7, -4, 1, 7, -4, 1, 6, -4, 1, 6, -4, 2, 6, -4, 2, 7, -4, -1, 8, -4, -2, 8, -4, -2, 7, -4, -2, 7, -4, -1, 7, -4, -1, 8, -4, 2, 8, -4, 1, 8, -4, 1, 7, -4, 1, 7, -4, 2, 7, -4, 2, 8, -4)
@@ -34,9 +35,74 @@ data = PackedVector3Array(-4, 1, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, -4, 1, 2, -4, 1, 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rq35p"]
 data = PackedVector3Array(-2, 1, -3, -1, 1, -3, -1, 1, 4, -1, 1, 4, -2, 1, 4, -2, 1, -3, -2, 1, -4, 2, 1, -4, 2, 1, -3, 2, 1, -3, -2, 1, -3, -2, 1, -4, -1, 1, -2, 1, 1, -2, 1, 1, 4, 1, 1, 4, -1, 1, 4, -1, 1, -2, -1, 1, -3, 2, 1, -3, 2, 1, -2, 2, 1, -2, -1, 1, -2, -1, 1, -3, 1, 1, -2, 2, 1, -2, 2, 1, 4, 2, 1, 4, 1, 1, 4, 1, 1, -2, -3, 2, -3, -2, 2, -3, -2, 2, 4, -2, 2, 4, -3, 2, 4, -3, 2, -3, -3, 2, -4, -2, 2, -4, -2, 2, -3, -2, 2, -3, -3, 2, -3, -3, 2, -4, 2, 2, -3, 3, 2, -3, 3, 2, 4, 3, 2, 4, 2, 2, 4, 2, 2, -3, 2, 2, -4, 3, 2, -4, 3, 2, -3, 3, 2, -3, 2, 2, -3, 2, 2, -4, -4, 7, -3, -3, 7, -3, -3, 7, 4, -3, 7, 4, -4, 7, 4, -4, 7, -3, -4, 7, -4, -3, 7, -4, -3, 7, -3, -3, 7, -3, -4, 7, -3, -4, 7, -4, 3, 7, -3, 4, 7, -3, 4, 7, 4, 4, 7, 4, 3, 7, 4, 3, 7, -3, 3, 7, -4, 4, 7, -4, 4, 7, -3, 4, 7, -3, 3, 7, -3, 3, 7, -4, -3, 8, -3, 3, 8, -3, 3, 8, 4, 3, 8, 4, -3, 8, 4, -3, 8, -3, -3, 8, -4, 3, 8, -4, 3, 8, -3, 3, 8, -3, -3, 8, -3, -3, 8, -4, -1, 0, 4, -1, 0, -3, -3, 0, -3, -3, 0, -3, -3, 0, 4, -1, 0, 4, 3, 0, -3, 3, 0, -4, -3, 0, -4, -3, 0, -4, -3, 0, -3, 3, 0, -3, 1, 0, 4, 1, 0, -2, -1, 0, -2, -1, 0, -2, -1, 0, 4, 1, 0, 4, 3, 0, -2, 3, 0, -3, -1, 0, -3, -1, 0, -3, -1, 0, -2, 3, 0, -2, 3, 0, 4, 3, 0, -2, 1, 0, -2, 1, 0, -2, 1, 0, 4, 3, 0, 4, -3, 1, 4, -3, 1, -3, -4, 1, -3, -4, 1, -3, -4, 1, 4, -3, 1, 4, -3, 1, -3, -3, 1, -4, -4, 1, -4, -4, 1, -4, -4, 1, -3, -3, 1, -3, 4, 1, 4, 4, 1, -3, 3, 1, -3, 3, 1, -3, 3, 1, 4, 4, 1, 4, 4, 1, -3, 4, 1, -4, 3, 1, -4, 3, 1, -4, 3, 1, -3, 4, 1, -3, -2, 5, 4, -2, 5, -3, -3, 5, -3, -3, 5, -3, -3, 5, 4, -2, 5, 4, -2, 5, -3, -2, 5, -4, -3, 5, -4, -3, 5, -4, -3, 5, -3, -2, 5, -3, 3, 5, -1, 3, 5, -2, -2, 5, -2, -2, 5, -2, -2, 5, -1, 3, 5, -1, 1, 5, 4, 1, 5, -1, -1, 5, -1, -1, 5, -1, -1, 5, 4, 1, 5, 4, 3, 5, 4, 3, 5, -1, 2, 5, -1, 2, 5, -1, 2, 5, 4, 3, 5, 4, 3, 5, -2, 3, 5, -3, 2, 5, -3, 2, 5, -3, 2, 5, -2, 3, 5, -2, 3, 5, -3, 3, 5, -4, 2, 5, -4, 2, 5, -4, 2, 5, -3, 3, 5, -3, -1, 6, 4, -1, 6, -1, -2, 6, -1, -2, 6, -1, -2, 6, 4, -1, 6, 4, 2, 6, -2, 2, 6, -3, -2, 6, -3, -2, 6, -3, -2, 6, -2, 2, 6, -2, 2, 6, -3, 2, 6, -4, -2, 6, -4, -2, 6, -4, -2, 6, -3, 2, 6, -3, 2, 6, 4, 2, 6, -1, 1, 6, -1, 1, 6, -1, 1, 6, 4, 2, 6, 4, -4, 7, -3, -4, 7, 4, -4, 1, 4, -4, 1, 4, -4, 1, -3, -4, 7, -3, -4, 7, -4, -4, 7, -3, -4, 1, -3, -4, 1, -3, -4, 1, -4, -4, 7, -4, -3, 1, -3, -3, 1, 4, -3, 0, 4, -3, 0, 4, -3, 0, -3, -3, 1, -3, -3, 8, -3, -3, 8, 4, -3, 7, 4, -3, 7, 4, -3, 7, -3, -3, 8, -3, -3, 1, -4, -3, 1, -3, -3, 0, -3, -3, 0, -3, -3, 0, -4, -3, 1, -4, -3, 8, -4, -3, 8, -3, -3, 7, -3, -3, 7, -3, -3, 7, -4, -3, 8, -4, -1, 6, -1, -1, 6, 4, -1, 5, 4, -1, 5, 4, -1, 5, -1, -1, 6, -1, 2, 2, -3, 2, 2, 4, 2, 1, 4, 2, 1, 4, 2, 1, -3, 2, 2, -3, 2, 6, -1, 2, 6, 4, 2, 5, 4, 2, 5, 4, 2, 5, -1, 2, 6, -1, 2, 6, -3, 2, 6, -2, 2, 5, -2, 2, 5, -2, 2, 5, -3, 2, 6, -3, 2, 2, -4, 2, 2, -3, 2, 1, -3, 2, 1, -3, 2, 1, -4, 2, 2, -4, 2, 6, -4, 2, 6, -3, 2, 5, -3, 2, 5, -3, 2, 5, -4, 2, 6, -4, 3, 5, -3, 3, 5, 4, 3, 2, 4, 3, 2, 4, 3, 2, -3, 3, 5, -3, 3, 5, -4, 3, 5, -3, 3, 2, -3, 3, 2, -3, 3, 2, -4, 3, 5, -4, -3, 5, -3, -3, 2, -3, -3, 2, 4, -3, 2, 4, -3, 5, 4, -3, 5, -3, -3, 5, -4, -3, 2, -4, -3, 2, -3, -3, 2, -3, -3, 5, -3, -3, 5, -4, -2, 2, -3, -2, 1, -3, -2, 1, 4, -2, 1, 4, -2, 2, 4, -2, 2, -3, -2, 6, -1, -2, 5, -1, -2, 5, 4, -2, 5, 4, -2, 6, 4, -2, 6, -1, -2, 6, -3, -2, 5, -3, -2, 5, -2, -2, 5, -2, -2, 6, -2, -2, 6, -3, -2, 2, -4, -2, 1, -4, -2, 1, -3, -2, 1, -3, -2, 2, -3, -2, 2, -4, -2, 6, -4, -2, 5, -4, -2, 5, -3, -2, 5, -3, -2, 6, -3, -2, 6, -4, 1, 6, -1, 1, 5, -1, 1, 5, 4, 1, 5, 4, 1, 6, 4, 1, 6, -1, 3, 1, -3, 3, 0, -3, 3, 0, 4, 3, 0, 4, 3, 1, 4, 3, 1, -3, 3, 8, -3, 3, 7, -3, 3, 7, 4, 3, 7, 4, 3, 8, 4, 3, 8, -3, 3, 1, -4, 3, 0, -4, 3, 0, -3, 3, 0, -3, 3, 1, -3, 3, 1, -4, 3, 8, -4, 3, 7, -4, 3, 7, -3, 3, 7, -3, 3, 8, -3, 3, 8, -4, 4, 7, -3, 4, 1, -3, 4, 1, 4, 4, 1, 4, 4, 7, 4, 4, 7, -3, 4, 7, -4, 4, 1, -4, 4, 1, -3, 4, 1, -3, 4, 7, -3, 4, 7, -4, -3, 0, 4, -3, 1, 4, -1, 1, 4, -1, 1, 4, -1, 0, 4, -3, 0, 4, -1, 0, 4, -1, 1, 4, 1, 1, 4, 1, 1, 4, 1, 0, 4, -1, 0, 4, 1, 0, 4, 1, 1, 4, 3, 1, 4, 3, 1, 4, 3, 0, 4, 1, 0, 4, -4, 1, 4, -4, 2, 4, -2, 2, 4, -2, 2, 4, -2, 1, 4, -4, 1, 4, 2, 1, 4, 2, 2, 4, 4, 2, 4, 4, 2, 4, 4, 1, 4, 2, 1, 4, -4, 2, 4, -4, 7, 4, -3, 7, 4, -3, 7, 4, -3, 2, 4, -4, 2, 4, 3, 2, 4, 3, 7, 4, 4, 7, 4, 4, 7, 4, 4, 2, 4, 3, 2, 4, -3, 5, 4, -3, 8, 4, -2, 8, 4, -2, 8, 4, -2, 5, 4, -3, 5, 4, -1, 5, 4, -1, 8, 4, 1, 8, 4, 1, 8, 4, 1, 5, 4, -1, 5, 4, 2, 5, 4, 2, 8, 4, 3, 8, 4, 3, 8, 4, 3, 5, 4, 2, 5, 4, -2, 6, 4, -2, 7, 4, -1, 7, 4, -1, 7, 4, -1, 6, 4, -2, 6, 4, 1, 6, 4, 1, 7, 4, 2, 7, 4, 2, 7, 4, 2, 6, 4, 1, 6, 4, -2, 7, 4, -2, 8, 4, -1, 8, 4, -1, 8, 4, -1, 7, 4, -2, 7, 4, 1, 7, 4, 1, 8, 4, 2, 8, 4, 2, 8, 4, 2, 7, 4, 1, 7, 4, -2, 5, -1, -2, 6, -1, -1, 6, -1, -1, 6, -1, -1, 5, -1, -2, 5, -1, 1, 5, -1, 1, 6, -1, 2, 6, -1, 2, 6, -1, 2, 5, -1, 1, 5, -1, 2, 6, -2, -2, 6, -2, -2, 5, -2, -2, 5, -2, 2, 5, -2, 2, 6, -2, 3, 1, -4, -3, 1, -4, -3, 0, -4, -3, 0, -4, 3, 0, -4, 3, 1, -4, -2, 2, -4, -4, 2, -4, -4, 1, -4, -4, 1, -4, -2, 1, -4, -2, 2, -4, 4, 2, -4, 2, 2, -4, 2, 1, -4, 2, 1, -4, 4, 1, -4, 4, 2, -4, -3, 7, -4, -4, 7, -4, -4, 2, -4, -4, 2, -4, -3, 2, -4, -3, 7, -4, 4, 7, -4, 3, 7, -4, 3, 2, -4, 3, 2, -4, 4, 2, -4, 4, 7, -4, -2, 8, -4, -3, 8, -4, -3, 5, -4, -3, 5, -4, -2, 5, -4, -2, 8, -4, 3, 8, -4, 2, 8, -4, 2, 5, -4, 2, 5, -4, 3, 5, -4, 3, 8, -4, 2, 8, -4, -2, 8, -4, -2, 6, -4, -2, 6, -4, 2, 6, -4, 2, 8, -4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnc4p"]
+size = Vector3(2, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbxx3"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1d0ov"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e3t04"]
+size = Vector3(15, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6od7p"]
+size = Vector3(15, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8epn"]
+size = Vector3(2, 8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enkt8"]
+size = Vector3(2, 9, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o447j"]
+size = Vector3(15, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lvr2"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_by4gi"]
+size = Vector3(3, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jvvq8"]
+size = Vector3(1, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3trj"]
+size = Vector3(13, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn3q1"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7j0t"]
+size = Vector3(7, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2srp7"]
+size = Vector3(10, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfdov"]
+size = Vector3(7, 14, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwre6"]
+size = Vector3(7, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wgro"]
+size = Vector3(1, 8, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rq35p"]
+size = Vector3(7, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x85rg"]
+size = Vector3(11.6428, 1, 6)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gnc4p"]
+height = 4.5
+radius = 0.0375977
+
 [node name="MeshLibraryScene" type="Node3D"]
 
 [node name="Corridor4Way" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("1_xwem0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Corridor4Way"]
@@ -113,3 +179,192 @@ surface_material_override/0 = ExtResource("3_dbxx3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StationDoor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rq35p")
+
+[node name="Corridor_SLOPE_STRAIGHT2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+gi_mode = 2
+mesh = ExtResource("10_gnc4p")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_dbxx3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Corridor_SLOPE_STRAIGHT2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8.5, 4)
+shape = SubResource("BoxShape3D_gnc4p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 11.5, 7.5)
+shape = SubResource("BoxShape3D_dbxx3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 11.5, 0.5)
+shape = SubResource("BoxShape3D_dbxx3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 9.5, 1.5)
+shape = SubResource("BoxShape3D_1d0ov")
+
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 14.5, 4)
+shape = SubResource("BoxShape3D_e3t04")
+
+[node name="CollisionShape3D34" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 14.5, 4)
+shape = SubResource("BoxShape3D_6od7p")
+
+[node name="CollisionShape3D33" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9, 4)
+shape = SubResource("BoxShape3D_o8epn")
+
+[node name="CollisionShape3D35" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10.5, 4)
+shape = SubResource("BoxShape3D_enkt8")
+
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 15, 2)
+shape = SubResource("BoxShape3D_o447j")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 15, 6)
+shape = SubResource("BoxShape3D_o447j")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 9.5, 6.5)
+shape = SubResource("BoxShape3D_1d0ov")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 8.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.5, 6.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 9.5, 1.5)
+shape = SubResource("BoxShape3D_1d0ov")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 8.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.5, 1.5)
+shape = SubResource("BoxShape3D_5lvr2")
+
+[node name="CollisionShape3D36" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 6, 1.5)
+shape = SubResource("BoxShape3D_by4gi")
+
+[node name="CollisionShape3D39" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10.5, 1.5)
+shape = SubResource("BoxShape3D_jvvq8")
+
+[node name="CollisionShape3D40" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10.5, 6.5)
+shape = SubResource("BoxShape3D_jvvq8")
+
+[node name="CollisionShape3D41" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 13.5, 6.5)
+shape = SubResource("BoxShape3D_s3trj")
+
+[node name="CollisionShape3D42" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 13.5, 1.5)
+shape = SubResource("BoxShape3D_s3trj")
+
+[node name="CollisionShape3D37" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 6, 6.5)
+shape = SubResource("BoxShape3D_by4gi")
+
+[node name="CollisionShape3D38" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5.5, 4)
+shape = SubResource("BoxShape3D_hn3q1")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, 1.5)
+shape = SubResource("BoxShape3D_k7j0t")
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, 6.5)
+shape = SubResource("BoxShape3D_k7j0t")
+
+[node name="CollisionShape3D43" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 8.37868, 5.91421, 7.5)
+shape = SubResource("BoxShape3D_2srp7")
+
+[node name="CollisionShape3D44" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 8.37868, 5.91421, 0.5)
+shape = SubResource("BoxShape3D_2srp7")
+
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 8, 7.5)
+shape = SubResource("BoxShape3D_hfdov")
+
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 8, 0.5)
+shape = SubResource("BoxShape3D_hfdov")
+
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 11.5, 0.5)
+shape = SubResource("BoxShape3D_mwre6")
+
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 11.5, 7.5)
+shape = SubResource("BoxShape3D_mwre6")
+
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 11, 4)
+shape = SubResource("BoxShape3D_1wgro")
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, 4)
+shape = SubResource("BoxShape3D_rq35p")
+
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 10.2333, 4.53294, 4)
+shape = SubResource("BoxShape3D_x85rg")
+
+[node name="CollisionShape3D45" type="CollisionShape3D" parent="Corridor_SLOPE_STRAIGHT2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 14.0227, 8.97875, 3.75)
+shape = SubResource("CylinderShape3D_gnc4p")
