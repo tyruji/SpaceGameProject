@@ -4,7 +4,7 @@ using System;
 public partial class AutomaticDoor : Door
 {
     [Export]
-    public bool OnlyDetectPlayer { get; set; } = false;
+    public bool OnlyDetectCharacters { get; set; } = true;
 
     private int _bodiesInRange = 0;
 
@@ -28,19 +28,19 @@ public partial class AutomaticDoor : Door
 
     public void OnBodyEntered( Node body )
     {
-        if( OnlyDetectPlayer && body is not Player ) return;
+        if( OnlyDetectCharacters && body is not ICharacter ) return;
 
             // Only detect moving bodies.
-        if( body is not CharacterBody3D and not RigidBody3D ) return;
+        //if( body is not CharacterBody3D and not RigidBody3D ) return;
 
         ++_bodiesInRange;
     }
 
     public void OnBodyExited( Node body )
     {
-        if( OnlyDetectPlayer && body is not Player ) return;
+        if( OnlyDetectCharacters && body is not ICharacter ) return;
 
-        if( body is not CharacterBody3D and not RigidBody3D ) return;
+        //if( body is not CharacterBody3D and not RigidBody3D ) return;
 
         --_bodiesInRange;
     }
