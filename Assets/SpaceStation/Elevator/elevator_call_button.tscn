@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccmdsblqly30u"]
+
+[ext_resource type="Script" uid="uid://d4h4eyf3gtjh8" path="res://Scripts/Elevator/ElevatorCallButton.cs" id="1_xqdyw"]
+[ext_resource type="Material" uid="uid://cbbkdhro0hfh2" path="res://Assets/GlobalMats/HighlightPulse.tres" id="2_d8yjk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gcsgg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gcsgg"]
+
+[node name="ElevatorCallButton" type="Area3D"]
+script = ExtResource("1_xqdyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gcsgg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gcsgg")
+
+[node name="OutlineMesh" type="MeshInstance3D" parent="."]
+visible = false
+material_override = ExtResource("2_d8yjk")
+mesh = SubResource("BoxMesh_gcsgg")

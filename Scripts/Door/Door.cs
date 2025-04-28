@@ -12,6 +12,8 @@ public partial class Door : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer = null;
 
+    public bool Closed { get; private set; } = true;
+
     public override void _Ready()
     {
         AnimationPlayer ??= GetNode<AnimationPlayer>( nameof( AnimationPlayer ) );
@@ -19,6 +21,9 @@ public partial class Door : Node3D
 
     public void Open()
     {
+        if( !Closed ) return;
+
+        Closed = false;
         AnimationPlayer.Play( nameof( Open ) );
 
         if( OpenSound == null ) return;
@@ -28,6 +33,9 @@ public partial class Door : Node3D
 
     public void Close()
     {
+        if( Closed ) return;
+
+        Closed = true;
         AnimationPlayer.Play( nameof( Close ) );
 
         if( CloseSound == null ) return;

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3redlx1g63x6"]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/elevator.vox-660262107f31ca1de10fb7623c04ceaa.model0.mesh" id="1_1dc1c"]
+[ext_resource type="Material" uid="uid://cnwjttq6nwgpr" path="res://Assets/GlobalMats/MainMat.tres" id="1_2lhma"]
+[ext_resource type="Script" uid="uid://bhjiybs0hwb6k" path="res://Scripts/Elevator/Elevator.cs" id="1_ugm7d"]
+[ext_resource type="PackedScene" uid="uid://8hyflt41env6" path="res://Assets/SpaceStation/Elevator/elevator_door.tscn" id="3_fa67b"]
+[ext_resource type="AudioStream" uid="uid://demi0wf0e3wpn" path="res://Assets/Sfx/elevator.wav" id="5_qkve6"]
+[ext_resource type="AudioStream" uid="uid://cnbmmg2oc8uua" path="res://Assets/Sfx/elevator_end.wav" id="6_vwwre"]
+[ext_resource type="PackedScene" uid="uid://ccmdsblqly30u" path="res://Assets/SpaceStation/Elevator/elevator_call_button.tscn" id="7_p8e6p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fa67b"]
+size = Vector3(8, 1, 7)
+
+[node name="Elevator" type="AnimatableBody3D"]
+sync_to_physics = false
+script = ExtResource("1_ugm7d")
+
+[node name="_MeshInstance3D_37636" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+material_override = ExtResource("1_2lhma")
+gi_mode = 2
+mesh = ExtResource("1_1dc1c")
+
+[node name="ElevatorDoor" parent="." instance=ExtResource("3_fa67b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111561, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+shape = SubResource("BoxShape3D_fa67b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -3.5)
+shape = SubResource("BoxShape3D_fa67b")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 7.5, -0.5)
+shape = SubResource("BoxShape3D_fa67b")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 4.5, 3.5)
+shape = SubResource("BoxShape3D_fa67b")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -1.31134e-07, 0, 1.31134e-07, 1, 1, 4.37114e-08, -5.73206e-15, 3.5, 3.5, 0)
+shape = SubResource("BoxShape3D_fa67b")
+
+[node name="ElevatorRun" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_qkve6")
+
+[node name="ElevatorStop" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_vwwre")
+
+[node name="ElevatorCallButton" parent="." node_paths=PackedStringArray("Elevator") instance=ExtResource("7_p8e6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91647, 4.38201, 3.20413)
+Elevator = NodePath("..")
+ElevatorPosition = Vector3(-292, 0, 108)
+
+[node name="ElevatorCallButton2" parent="." node_paths=PackedStringArray("Elevator") instance=ExtResource("7_p8e6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91647, 2.9404, 3.20413)
+Elevator = NodePath("..")
+ElevatorPosition = Vector3(-292, -8, 108)
+
+[connection signal="ElevatorReachDestination" from="." to="ElevatorRun" method="stop"]
+[connection signal="ElevatorReachDestination" from="." to="ElevatorStop" method="play"]
+[connection signal="ElevatorStartMoving" from="." to="ElevatorRun" method="play"]

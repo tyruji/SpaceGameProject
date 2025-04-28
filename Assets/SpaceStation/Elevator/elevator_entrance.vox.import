@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bfui7m6imlycg"
+path="res://.godot/imported/elevator_entrance.vox-1b5c4e52bfc358a783f78a40fd3c98b8.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/Elevator/elevator_entrance.vox"
+dest_files=["res://.godot/imported/elevator_entrance.vox-1b5c4e52bfc358a783f78a40fd3c98b8.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=0.5
+enable_baked_lighting=true
