@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cf8sck6xab5lu"
+path="res://.godot/imported/SHIP_HANGAR_FOR_LOOP.vox-ee80be82614c13e73c4778516aab4bdc.tscn"
+
+[deps]
+
+source_file="res://Assets/SpaceStation/SHIP_HANGAR/SHIP_HANGAR_FOR_LOOP.vox"
+dest_files=["res://.godot/imported/SHIP_HANGAR_FOR_LOOP.vox-ee80be82614c13e73c4778516aab4bdc.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true
