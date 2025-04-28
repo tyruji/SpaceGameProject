@@ -48,6 +48,7 @@ material = SubResource("StandardMaterial3D_40cfo")
 size = Vector2(0.2, 0.2)
 
 [node name="RoboNpc" type="AnimatableBody3D"]
+sync_to_physics = false
 script = ExtResource("1_40cfo")
 Gravity = 0.0
 MaxSpeed = 5.0
